@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zhongyuan\\Desktop\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\zhongyuan\\Desktop\\COVID-19-Service-Website\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zhongyuan\\Desktop\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\zhongyuan\\Desktop\\COVID-19-Service-Website\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zhongyuan\\Desktop\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\zhongyuan\\Desktop\\COVID-19-Service-Website\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\zhongyuan\\Desktop\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\zhongyuan\\Desktop\\COVID-19-Service-Website\\WebApi.csproj",
         "packagesPath": "C:\\Users\\zhongyuan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zhongyuan\\Desktop\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\zhongyuan\\Desktop\\COVID-19-Service-Website\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\zhongyuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,9 +38,13 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[3.1.1, )"
             }
           },
           "imports": [

@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Pomelo.EntityFrameworkCore.MySql.Internal;
+using WebApi.Models;
 
 namespace WebApi
 {
@@ -25,6 +29,9 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<MapContext>(options => options.UseMySql(Configuration.GetConnectionString("MapDatabase"),
+                mySqlOptions => mySqlOptions.ServerVersion(new Version(5, 7, 30), ServerType.MySql)));
+
             services.AddControllers();
         }
 
@@ -35,6 +42,8 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseDefaultFiles(); //设置缺省静态文件（index.html或index.htm）
+            app.UseStaticFiles(); //启动静态文件（页面、js、图片等各种前端文件）
 
             app.UseHttpsRedirection();
 

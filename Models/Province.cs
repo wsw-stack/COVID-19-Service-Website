@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,11 +13,11 @@ namespace newproject.Models
         [Key]
         public long LocationId { get; set; }
         public string ProvinceShortName { get; set; }
-        public int CurrentConfirmedCount { get; set; }
-        public int ConfirmedCount { get; set; }
-        public int SuspectedCount { get; set; }
-        public int CuredCount { get; set; }
-        public int DeadCount { get; set; }
+        public Nullable<int> CurrentConfirmedCount { get; set; }
+        public Nullable<int> ConfirmedCount { get; set; }
+        public Nullable<int> SuspectedCount { get; set; }
+        public Nullable<int> CuredCount { get; set; }
+        public Nullable<int> DeadCount { get; set; }
         public List<City> Cities { get; set; }
         public long UpdateTime { get; set; }
     }
