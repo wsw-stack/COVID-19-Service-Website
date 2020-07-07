@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zhongyuan\\newproject\\newproject.csproj": {}
+    "C:\\Users\\zhongyuan\\Desktop\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zhongyuan\\newproject\\newproject.csproj": {
+    "C:\\Users\\zhongyuan\\Desktop\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zhongyuan\\newproject\\newproject.csproj",
-        "projectName": "newproject",
-        "projectPath": "C:\\Users\\zhongyuan\\newproject\\newproject.csproj",
+        "projectUniqueName": "C:\\Users\\zhongyuan\\Desktop\\WebApi\\WebApi.csproj",
+        "projectName": "WebApi",
+        "projectPath": "C:\\Users\\zhongyuan\\Desktop\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\zhongyuan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zhongyuan\\newproject\\obj\\",
+        "outputPath": "C:\\Users\\zhongyuan\\Desktop\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\zhongyuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[*, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
