@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapDBInit", "MapDBInit\MapDBInit.csproj", "{2C97EE2C-6A5D-4EA9-AA5C-8ED7E852801C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C97EE2C-6A5D-4EA9-AA5C-8ED7E852801C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C97EE2C-6A5D-4EA9-AA5C-8ED7E852801C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C97EE2C-6A5D-4EA9-AA5C-8ED7E852801C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C97EE2C-6A5D-4EA9-AA5C-8ED7E852801C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86861C1A-5D08-463D-A574-21470718F531}
+	EndGlobalSection
+EndGlobal
