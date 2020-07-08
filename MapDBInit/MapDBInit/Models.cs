@@ -47,6 +47,7 @@ namespace MapDBInit
         public long ProvinceId { get; set; }
         [ForeignKey("ProvinceId")]
         public Province Province { get; set; }
+        public string Date { get => Province.Date; set => Date = value; }
 
         public object Clone()
         {

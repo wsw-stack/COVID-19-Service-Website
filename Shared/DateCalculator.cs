@@ -18,5 +18,11 @@ namespace WebApi.Shared
             long t = (date.Ticks - startTime.Ticks) / 10000;   //除10000调整为13位      
             return t;
         }
+
+        public static DateTime StringToDate(string date)
+        {
+            var stringDate = date.Split('/');
+            return new DateTime(int.Parse(stringDate[0]), int.Parse(stringDate[1]), int.Parse(stringDate[2]));
+        }
     }
 }
