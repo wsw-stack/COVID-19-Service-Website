@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newproject.Models
+namespace WebApi.Models
 {
     public class Province : ICloneable
     {
@@ -27,6 +27,17 @@ namespace newproject.Models
             Province newProvince = (Province)this.MemberwiseClone();
             newProvince.Cities = new List<City>(Cities);
             return newProvince;
+        }
+
+        public Province() { }
+
+        public Province(string name,string date)
+        {
+            CountryName = "中国";
+            ProvinceShortName = name;
+            CurrentConfirmedCount = ConfirmedCount = CuredCount = DeadCount = 0;
+            SuspectedCount = 0;
+            Date = date;
         }
     }
 }

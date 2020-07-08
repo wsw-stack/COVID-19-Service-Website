@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace newproject.Models
+namespace WebApi.Models
 { 
     public class City : ICloneable
     {
