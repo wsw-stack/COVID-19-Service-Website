@@ -21,10 +21,20 @@ namespace WebApi.Models
         public long ProvinceId { get; set; }
         [ForeignKey("ProvinceId")]
         public Province Province { get; set; }
+        public string Date { get => Province.Date; set => Date = value; }
 
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+
+        public City() { }
+
+        public City(string cityName, string date)
+        {
+            CityName = cityName;
+            CurrentConfirmedCount = ConfirmedCount = CuredCount = DeadCount = 0;
+            Date = date;
         }
     }
 }
