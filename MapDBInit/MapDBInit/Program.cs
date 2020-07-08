@@ -26,7 +26,7 @@ namespace MapDBInit
 
                 List<Province> provinces = JsonConvert.DeserializeObject<List<Province>>(jsonData);
 
-                var provincesChina = provinces.Where(s => s.CountryName == "中国" && s.ProvinceShortName != "中国" && s.CurrentConfirmedCount >= 0 && s.UpdateTime < DateToTicks(endDate)).ToList();
+                var provincesChina = provinces.Where(s => s.CountryName == "中国" && s.ProvinceShortName != "中国" && s.CurrentConfirmedCount >= 0 && s.UpdateTime < DateToTicks(endDate) && s.UpdateTime >= DateToTicks(startDate)).ToList();
 
                 foreach(var provinceChina in provincesChina)
                 {

@@ -28,7 +28,7 @@ namespace WebApi.Controllers
         /// <param name="provinceName"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        // GET: api/map/province?provinceName="湖北"&&date="2020/2/4"
+        /// <route>GET: api/map/province?provinceName="湖北"&&date="2020/2/4"</route>
         [HttpGet("province")]
         public ActionResult<Province> GetProvinceDataCertainDate(string provinceName,string date)
         {
@@ -54,7 +54,7 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="provinceName"></param>
         /// <returns></returns>
-        // Get: api/map/province?provinceName="湖北"
+        /// <route>Get: api/map/province?provinceName="湖北"</route>
         [HttpGet("province")]
         public ActionResult<List<Province>> GetAllProvinceData(string provinceName)
         {
@@ -70,12 +70,38 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
+        /// 返回特定日期的所有省数据
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        /// <route>GET: api/map/provnce?date="2020/3/14"</route>
+        [HttpGet("province")]
+        public ActionResult<List<Province>> GetAllProvinceDataCertainDay(string date)
+        {
+            string pattern = @"2020/[0-9]+/[0-9]+$";
+            if (!Regex.IsMatch(date, pattern))
+            {
+                return BadRequest();
+            }
+
+            var query = mapDb.Provinces.Where(s => s.Date == date);
+            if (query == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return query.ToList();
+            }
+        }
+
+        /// <summary>
         /// 返回特定时间特定城市的疫情数据
         /// </summary>
         /// <param name="cityName"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        // Get: api/map/city?cityName="武汉"&&date="2020/3/14"
+        /// <route>Get: api/map/city?cityName="武汉"&&date="2020/3/14"</route>
         [HttpGet("city")]
         public ActionResult<City> GetCityDataCertainDate(string cityName,string date)
         {
@@ -113,11 +139,37 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="cityName"></param>
         /// <returns></returns>
-        // Get: api/map/city?cityName="武汉"
+        /// <route> Get: api/map/city?cityName="武汉"</route>
         [HttpGet("city")]
         public ActionResult<List<City>> GetAllCityData(string cityName)
         {
             var query = mapDb.Cities.Where(s => s.CityName == cityName);
+            if (query == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return query.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 返回特定日期的所有城市数据
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        /// <route>Get: api/map/city?date="2020/3/14"</route>
+        [HttpGet("city")]
+        public ActionResult<List<City>> GetAllCityDataCertainDay(string date)
+        {
+            string pattern = @"2020/[0-9]+/[0-9]+$";
+            if (!Regex.IsMatch(date, pattern))
+            {
+                return BadRequest();
+            }
+
+            var query = mapDb.Cities.Where(s => s.Date == date);
             if (query == null)
             {
                 return NotFound();
