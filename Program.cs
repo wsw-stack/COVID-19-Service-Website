@@ -14,9 +14,6 @@ namespace WebApi
     {
         public static void Main(string[] args)
         {
-            string stringDate = "2020/3/19";
-            Console.WriteLine(DateCalculator.StringToDate(stringDate));
-
             CreateHostBuilder(args).Build().Run();
         }
 

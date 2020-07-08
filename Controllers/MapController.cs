@@ -56,7 +56,7 @@ namespace WebApi.Controllers
         /// <returns></returns>
         /// <route>Get: api/map/province?provinceName="湖北"</route>
         [HttpGet("province")]
-        public ActionResult<List<Province>> GetAllProvinceData(string provinceName)
+        public ActionResult<List<Province>> GetProvinceSeriesData(string provinceName)
         {
             var query = mapDb.Provinces.Where(s => s.ProvinceShortName == provinceName);
             if (query == null) 
@@ -70,7 +70,7 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// 返回特定日期的所有省数据
+        /// 返回特定日期的所有省疫情数据
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
@@ -112,7 +112,6 @@ namespace WebApi.Controllers
             }
 
             var query = mapDb.Cities.FirstOrDefault(s => s.CityName == cityName && s.Date == date);
-
             if (query == null) 
             {
                 // 如无数据，则查找前面的数据，直到找到数据为止
@@ -141,7 +140,7 @@ namespace WebApi.Controllers
         /// <returns></returns>
         /// <route> Get: api/map/city?cityName="武汉"</route>
         [HttpGet("city")]
-        public ActionResult<List<City>> GetAllCityData(string cityName)
+        public ActionResult<List<City>> GetCitySeriesData(string cityName)
         {
             var query = mapDb.Cities.Where(s => s.CityName == cityName);
             if (query == null)
