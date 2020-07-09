@@ -30,3 +30,4 @@ C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\stat
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.dll
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.pdb
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.genruntimeconfig.cache
+C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.csprojAssemblyReference.cache

@@ -12,8 +12,8 @@ using System.Text.RegularExpressions;
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class MapController:ControllerBase
+    [Route("api/map")]
+    public class MapController : ControllerBase
     {
         private readonly MapContext mapDb;
 
