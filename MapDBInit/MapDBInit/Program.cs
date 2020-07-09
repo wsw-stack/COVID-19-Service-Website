@@ -15,7 +15,7 @@ namespace MapDBInit
         {
             using (var context = new MapContext()) 
             {
-                string jsonFile = @"C:\Users\zhongyuan\Desktop\DXY-COVID-19-Data-master\json\DXYArea-TimeSeries.json";
+                string jsonFile = @"..\..\..\..\Data\DXYArea-TimeSeries.json";
 
                 FileStream fin= new FileStream(jsonFile, FileMode.Open, FileAccess.Read);
                 StreamReader reader = new StreamReader(fin, Encoding.UTF8);
@@ -85,7 +85,7 @@ namespace MapDBInit
                 context.SaveChanges();
 
 
-                jsonFile = @"C:\Users\zhongyuan\Desktop\DXY-COVID-19-Data-master\json\DXYOverall-TimeSeries.json";
+                jsonFile = @"..\..\..\..\Data\DXYOverall-TimeSeries.json";
                 fin = new FileStream(jsonFile, FileMode.Open, FileAccess.Read);
                 reader = new StreamReader(fin, Encoding.UTF8);
                 jsonData = reader.ReadToEnd();
