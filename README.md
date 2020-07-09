@@ -1,6 +1,6 @@
 # COVID-19-Service-Website
 
-![GitHub top language](https://img.shields.io/github/languages/top/ashyseer/COVID-19-Service-Website?color=green)![GitHub](https://img.shields.io/github/license/ashyseer/COVID-19-Service-Website?color=blueviolet)![GitHub repo size](https://img.shields.io/github/repo-size/ashyseer/COVID-19-Service-Website)![GitHub contributors](https://img.shields.io/github/contributors/ashyseer/COVID-19-Service-Website)![GitHub last commit](https://img.shields.io/github/last-commit/ashyseer/COVID-19-Service-Website)
+![GitHub top language](https://img.shields.io/github/languages/top/ashyseer/COVID-19-Service-Website?color=green)![GitHub](https://img.shields.io/github/license/ashyseer/COVID-19-Service-Website?color=blueviolet)  ![GitHub repo size](https://img.shields.io/github/repo-size/ashyseer/COVID-19-Service-Website)![GitHub contributors](https://img.shields.io/github/contributors/ashyseer/COVID-19-Service-Website)  ![GitHub last commit](https://img.shields.io/github/last-commit/ashyseer/COVID-19-Service-Website)
 
 ## Web API
 
