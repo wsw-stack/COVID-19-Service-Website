@@ -29,8 +29,11 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<MapContext>(options => options.UseMySql(Configuration.GetConnectionString("MapDatabase"),
-                mySqlOptions => mySqlOptions.ServerVersion(new Version(5, 7, 30), ServerType.MySql)));
+            services.AddDbContextPool<MapContext>(options => options
+                .UseMySql(Configuration.GetConnectionString("MapDatabase"), 
+                    mySqlOptions => mySqlOptions
+                    .ServerVersion(new Version(5, 7, 30), ServerType.MySql)
+            ));
 
             services.AddControllers();
         }
@@ -42,8 +45,8 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseDefaultFiles(); //ÉèÖÃÈ±Ê¡¾²Ì¬ÎÄ¼þ£¨index.html»òindex.htm£©
-            app.UseStaticFiles(); //Æô¶¯¾²Ì¬ÎÄ¼þ£¨Ò³Ãæ¡¢js¡¢Í¼Æ¬µÈ¸÷ÖÖÇ°¶ËÎÄ¼þ£©
+            app.UseDefaultFiles(); //ï¿½ï¿½ï¿½ï¿½È±Ê¡ï¿½ï¿½Ì¬ï¿½Ä¼ï¿½ï¿½ï¿½index.htmlï¿½ï¿½index.htmï¿½ï¿½
+            app.UseStaticFiles(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½Ä¼ï¿½ï¿½ï¿½Ò³ï¿½æ¡¢jsï¿½ï¿½Í¼Æ¬ï¿½È¸ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 
             app.UseHttpsRedirection();
 

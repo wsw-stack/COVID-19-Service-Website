@@ -4,44 +4,46 @@
 
 ## Web API
 
-| 类型 |       URL        |                 功能介绍                  |        参数        |         返回值          |
-| :--: | :--------------: | :---------------------------------------: | :----------------: | :---------------------: |
-| GET  | api/map/province |       获取特定日期特定省的疫情数据        | provinceName, date |    Province (Object)    |
-| GET  | api/map/province | 获取特定省的时间序列疫情数据（1.25-3.31） |    provinceName    | List\<Province> (Array) |
-| GET  | api/map/province |       获取特定日期所有省的疫情数据        |        date        | List\<Province> (Array) |
-| GET  |   api/map/city   |       获取特定日期特定市的疫情数据        |   cityName, date   |      City (Object)      |
-| GET  |   api/map/city   | 获取特定市的时间序列疫情数据（1.25-3.31） |      cityName      |   List\<City> (Array)   |
-| GET  |   api/map/city   |       获取特定日期所有省的疫情数据        |        date        |   List\<City> (Array)   |
+| 类型 |             URL             |                 功能介绍                  |        参数        |         返回值          |
+| :--: | :-------------------------: | :---------------------------------------: | :----------------: | :---------------------: |
+| GET  |      api/map/province       |       获取特定日期特定省的疫情数据        | provinceName, date |    Province (Object)    |
+| GET  | api/map/province/timeSeries | 获取特定省的时间序列疫情数据（1.25-3.31） |    provinceName    | List\<Province> (Array) |
+| GET  | api/map/province/certainDay |       获取特定日期所有省的疫情数据        |        date        | List\<Province> (Array) |
+| GET  |        api/map/city         |       获取特定日期特定市的疫情数据        |   cityName, date   |      City (Object)      |
+| GET  |   api/map/city/timeSeries   | 获取特定市的时间序列疫情数据（1.25-3.31） |      cityName      |   List\<City> (Array)   |
+| GET  |   api/map/city/certainDay   |       获取特定日期所有省的疫情数据        |        date        |   List\<City> (Array)   |
 
 ### Web API示例
 
-- URL: api/map/province?provinceName="湖北"&&date="2020/1/25"
+- URL: api/map/province?provinceName=湖北&&date=2020/2/4
 
   Response Type: application/json
 
-  Result = [
+  `Result = {`
 
-  ​		"Id" = 585;
+    `"countryName": "中国",`
 
-  ​		"CountryName" = "中国";
+    `"id": 575,`
 
-  ​		"ProvinceShortName" = "湖北";
+    `"provinceShortName": "湖北",`
 
-  ​		"CurrentConfirmedCount" = 0;
+    `"currentConfirmedCount": 0,`
 
-  ​		"ConfirmedCount" = 761;
+    `"confirmedCount": 16678,`
 
-  ​		"SuspectedCount" = 0;
+    `"suspectedCount": 0,`
 
-  ​		"CuredCount" = 32;
+    `"curedCount": 522,`
 
-  ​		"DeadCount" = 40;
+    `"deadCount": 479,`
 
-  ​		"UpdateTime" = 1579968099903;
+    `"cities": null,`
 
-  ​		"Date" = 2020/1/25
+    `"updateTime": 1580859411761,`
 
-  ]
+    `"date": "2020/2/4"`
+
+  `}`
 
 
 
