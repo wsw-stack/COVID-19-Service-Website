@@ -144,18 +144,14 @@ namespace WebApi.Controllers
         public ActionResult<List<City>> GetCitySeriesData(string cityName)
         {
             IQueryable<City> query = mapDb.Cities.Where(s => s.CityName == cityName);
+
             if (query == null)
             {
                 return NotFound();
             }
             else
             {
-                List<City> result = new List<City>(); 
-                foreach(var t in query)
-                {
-                    result.Add(t);
-                }
-                return result;
+                return query.ToList();
             }
         }
 
