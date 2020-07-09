@@ -15,7 +15,7 @@
 
 ### Web API示例
 
-- URL: api/map/province?provinceName=湖北&&date=2020/2/4
+- URL: https://localhost:5001/api/map/province?provinceName=湖北&&date=2020/2/4
 
   Response Type: application/json
 
