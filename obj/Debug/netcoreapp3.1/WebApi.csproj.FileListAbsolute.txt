@@ -28,7 +28,6 @@ C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\stat
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.dll
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.pdb
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.genruntimeconfig.cache
-C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.csprojAssemblyReference.cache
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.csproj.CoreCompileInputs.cache
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
@@ -37,3 +36,7 @@ C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\runt
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\Data\DXYArea-TimeSeries.json
+C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\Data\DXYNews-TimeSeries.json
+C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\Data\DXYOverall-TimeSeries.json
+C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\Data\DXYRumors-TimeSeries.json

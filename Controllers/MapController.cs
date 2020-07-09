@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using WebApi.Shared;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace WebApi.Controllers
 {
@@ -33,13 +35,13 @@ namespace WebApi.Controllers
         public ActionResult<Province> GetProvinceDataCertainDate(string provinceName, string date)
         {
             string pattern = @"2020/[0-9]+/[0-9]+$";
-            if (!Regex.IsMatch(date, pattern)) 
+            if (!Regex.IsMatch(date, pattern))
             {
                 return BadRequest();
             }
 
             var query = mapDb.Provinces.FirstOrDefault(s => s.ProvinceShortName == provinceName && s.Date == date);
-            if (query == null) 
+            if (query == null)
             {
                 return new Province(provinceName, date);
             }
@@ -59,7 +61,7 @@ namespace WebApi.Controllers
         public ActionResult<List<Province>> GetProvinceSeriesData(string provinceName)
         {
             var query = mapDb.Provinces.Where(s => s.ProvinceShortName == provinceName);
-            if (query == null) 
+            if (query == null)
             {
                 return NotFound();
             }
@@ -103,7 +105,7 @@ namespace WebApi.Controllers
         /// <returns></returns>
         /// <route>Get: api/map/city?cityName=武汉&&date=2020/3/14</route>
         [HttpGet("city")]
-        public ActionResult<City> GetCityDataCertainDate(string cityName,string date)
+        public ActionResult<City> GetCityDataCertainDate(string cityName, string date)
         {
             string pattern = @"2020/[0-9]+/[0-9]+$";
             if (!Regex.IsMatch(date, pattern))
@@ -111,27 +113,24 @@ namespace WebApi.Controllers
                 return BadRequest();
             }
 
-            var query = mapDb.Cities.FirstOrDefault(s => s.CityName == cityName && s.Date == date);
-            if (query == null) 
+            try
             {
-                // // 如无数据，则查找前面的数据，直到找到数据为止
-                // for (DateTime time = DateCalculator.StringToDate(date).AddDays(-1); time >= new DateTime(2020, 1, 25); time = time.AddDays(-1)) 
-                // {
-                //     var theDayBefore = mapDb.Cities.FirstOrDefault(s => s.CityName == cityName && s.Date == time.ToString("d"));
-                //     if (theDayBefore != null) 
-                //     {
-                //         return theDayBefore;
-                //     }
-                // }
+                //var result = mapDb.Cities.FromSqlInterpolated($"SELECT * FROM cities WHERE CityName={cityName} AND Date={date}").FirstOrDefault();
+                var result = mapDb.Cities.FirstOrDefault(s => s.CityName == cityName && s.Date == date);
 
-                // // 直到起始日期都无数据
-                // return new City(cityName, date);
-
-                return NotFound();
+                //var result = QueryCityCertainDay(cityName, date);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return result;
+                }
             }
-            else
+            catch (Exception e)
             {
-                return query;
+                return BadRequest(e.Message);
             }
         }
 
@@ -144,14 +143,19 @@ namespace WebApi.Controllers
         [HttpGet("city/timeSeries")]
         public ActionResult<List<City>> GetCitySeriesData(string cityName)
         {
-            var query = mapDb.Cities.Where(s => s.CityName == cityName);
+            IQueryable<City> query = mapDb.Cities.Where(s => s.CityName == cityName);
             if (query == null)
             {
                 return NotFound();
             }
             else
             {
-                return query.ToList();
+                List<City> result = new List<City>(); 
+                foreach(var t in query)
+                {
+                    result.Add(t);
+                }
+                return result;
             }
         }
 
@@ -179,6 +183,52 @@ namespace WebApi.Controllers
             {
                 return query.ToList();
             }
+        }
+
+        private City QueryCityCertainDay(string cityName, string date)
+        {
+            using(MySqlConnection connection=GetConnection())
+            {
+                string sql = $"SELECT * FROM cities WHERE CityName='{cityName}' AND Date='{date}'";
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    using(MySqlDataReader reader=cmd.ExecuteReader())
+                    {
+                        if (reader.Read()) 
+                        {
+                            City result = new City()
+                            {
+                                Id = reader.GetInt32(0),
+                                CityName = reader.GetString(1),
+                                CityEnglishName = reader.GetString(2),
+                                CurrentConfirmedCount = reader.GetInt32(3),
+                                ConfirmedCount = reader.GetInt32(4),
+                                CuredCount = reader.GetInt32(5),
+                                DeadCount = reader.GetInt32(6),
+                                ProvinceId = reader.GetInt32(7),
+                                Date = reader.GetString(8)
+                            };
+
+                            return result;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private static MySqlConnection GetConnection()
+        {
+            MySqlConnection connection = new MySqlConnection(
+                "datasource=localhost;username=root;" +
+                "password=312725802;database=mapDB;charset=utf8");
+            connection.Open();
+            return connection;
         }
     }
 }
