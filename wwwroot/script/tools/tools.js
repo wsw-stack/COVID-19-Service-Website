@@ -5,6 +5,15 @@ class ProvinceDataUnit {
     }
 }
 
+class TimeSeries{
+    constructor(timeSeries,timeSeriesView) {
+        this.timeSeries=timeSeries;
+        this.timeSeriesView=timeSeriesView;
+        this.startDate=getNewDate(2020,1,25);
+        this.endDate=getNewDate(2020,3,31);
+    }
+}
+
 let getNewDate = function (year, month, day) {
     return new Date(year, month - 1, day);
 };
@@ -32,15 +41,31 @@ let compareDate = function (date1, date2) {
     return date1.getTime() - date2.getTime();
 };
 
-let getTimeSeriesArray = function () {
+let getTimeSeriesArray = function (step = 1) {
+    let timeSeries = [];
+    let timeSeriesView = [];
+
+    let startDate = getNewDate(2020, 1, 25);
+    let endDate = getNewDate(2020, 3, 31);
+
+    for (let time = startDate; compareDate(endDate, time) >= 0; time = addDays(time, step)) {
+        let dateString = dateToString(time);
+        timeSeriesView.push(dateString.substring(5, dateString.length));
+        timeSeries.push(dateString);
+    }
+
+    return new TimeSeries(timeSeries,timeSeriesView);
+};
+
+let getTimeStampSeriesArray = function () {
     let timeSeries = [];
 
-    let startDate = getNewDate(2020,1,25);
-    let endDate = getNewDate(2020,3,31);
+    let startDate = getNewDate(2020, 1, 25);
+    let endDate = getNewDate(2020, 3, 31);
 
     for (let time = startDate; compareDate(endDate, time) >= 0; time = addDays(time, 1)) {
-        timeSeries.push(dateToString(time));
+        timeSeries.push(time.getTime());
     }
 
     return timeSeries;
-};
+}

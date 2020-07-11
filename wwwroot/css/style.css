@@ -11,3 +11,18 @@
     text-align: center;
     line-height: 800px;
 }
+
+#map_task1 {
+    height: 800px;
+    width: 1200px;
+    background: white;
+    margin: 20px 0 0;
+    float: left
+}
+
+#lineChart_task1 {
+    height: 600px;
+    width: 600px;
+    margin: 20px 40px;
+    float: right
+}
