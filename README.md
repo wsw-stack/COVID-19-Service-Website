@@ -6,6 +6,8 @@
 
 | 类型 |             URL             |                 功能介绍                  |        参数        |         返回值          |
 | :--: | :-------------------------: | :---------------------------------------: | :----------------: | :---------------------: |
+| GET  | api/map/country/certainDay  |        获取特定日期的全国疫情数据         |        date        |    Province (Object)    |
+| GET  | api/map/country/timeSeries  |         返回全国时间序列疫情数据          |         无         | List\<Province> (Array) |
 | GET  |      api/map/province       |       获取特定日期特定省的疫情数据        | provinceName, date |    Province (Object)    |
 | GET  | api/map/province/timeSeries | 获取特定省的时间序列疫情数据（1.25-3.31） |    provinceName    | List\<Province> (Array) |
 | GET  | api/map/province/certainDay |       获取特定日期所有省的疫情数据        |        date        | List\<Province> (Array) |
@@ -19,31 +21,45 @@
 
   Response Type: application/json
 
-  `Result = {`
+  Response =
 
-    `"countryName": "中国",`
+  ```json
+  {
+      "countryName":"中国",
+      "id":575,
+      "provinceShortName":"湖北",
+      "currentConfirmedCount":0,
+      "confirmedCount":16678,
+      "suspectedCount":0,
+      "curedCount":522,
+      "deadCount":479,
+      "cities":null,
+      "updateTime":1580859411761,
+      "date":"2020/2/4"
+  }
+  ```
 
-    `"id": 575,`
+- URL: https://localhost:5001/api/map/country?certainDay=2020/3/14
 
-    `"provinceShortName": "湖北",`
+  Response Type: application/json
 
-    `"currentConfirmedCount": 0,`
+  Response =
 
-    `"confirmedCount": 16678,`
-
-    `"suspectedCount": 0,`
-
-    `"curedCount": 522,`
-
-    `"deadCount": 479,`
-
-    `"cities": null,`
-
-    `"updateTime": 1580859411761,`
-
-    `"date": "2020/2/4"`
-
-  `}`
+  ```json
+  {
+      "countryName":"中国",
+      "id":2296,
+      "provinceShortName":"中国",
+      "currentConfirmedCount":12159,
+      "confirmedCount":81033,
+      "suspectedCount":95,
+      "curedCount":65680,
+      "deadCount":3194,
+      "cities":null,
+      "updateTime":1584230262402,
+      "date":"2020/3/14"
+  }
+  ```
 
 
 

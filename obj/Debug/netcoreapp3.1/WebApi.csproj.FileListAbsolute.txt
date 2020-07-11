@@ -40,3 +40,4 @@ C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\Data
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\Data\DXYNews-TimeSeries.json
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\Data\DXYOverall-TimeSeries.json
 C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\bin\Debug\netcoreapp3.1\Data\DXYRumors-TimeSeries.json
+C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\obj\Debug\netcoreapp3.1\WebApi.csprojAssemblyReference.cache

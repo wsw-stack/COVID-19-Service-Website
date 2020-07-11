@@ -76,7 +76,7 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        /// <route>GET: api/map/provnce?certainDatedate=2020/3/14</route>
+        /// <route>GET: api/map/provnce/certainDay?date=2020/3/14</route>
         [HttpGet("province/certainDay")]
         public ActionResult<List<Province>> GetAllProvinceDataCertainDay(string date)
         {
@@ -86,7 +86,7 @@ namespace WebApi.Controllers
                 return BadRequest();
             }
 
-            var query = mapDb.Provinces.Where(s => s.Date == date);
+            var query = mapDb.Provinces.Where(s => s.Date == date && s.ProvinceShortName != "中国");
             if (query == null)
             {
                 return NotFound();
@@ -96,6 +96,52 @@ namespace WebApi.Controllers
                 return query.ToList();
             }
         }
+
+        /// <summary>
+        /// 返回特定日期的全国数据
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        /// <route>GET: api/map/country/certainDay?date=2020/3/14</route>
+        [HttpGet("country/certainDay")]
+        public ActionResult<Province> GetOverallCertainDay(string date)
+        {
+            string pattern = @"2020/[0-9]+/[0-9]+$";
+            if (!Regex.IsMatch(date, pattern))
+            {
+                return BadRequest();
+            }
+
+            var query = mapDb.Provinces.FirstOrDefault(s => s.Date == date && s.ProvinceShortName == "中国");
+            if (query == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return query;
+            }
+        }
+
+        /// <summary>
+        /// 返回全国数据时间序列
+        /// </summary>
+        /// <returns></returns>
+        /// <route>GET: api/map/country/timeSeries</route>
+        [HttpGet("country/timeSeries")]
+        public ActionResult<List<Province>> GetOverallTimeSeries()
+        {
+            var query = mapDb.Provinces.Where(s => s.ProvinceShortName == "中国");
+            if (query == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return query.ToList();
+            }
+        }
+
 
         /// <summary>
         /// 返回特定时间特定城市的疫情数据
