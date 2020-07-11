@@ -1,51 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Map</title>
     <meta name="keywords" content="covid-19,新冠疫情,疫情全国数据,疫情模拟,C-SEIR模型,新浪微博数据,GIS,舆情分析"/>
     <meta name="description" content="新型冠状病毒(covid-19)全国统计数据，结合GIS空间分析与C-SEIR模型，对疫情扩散进行模拟，以及根据新浪微博数据对疫情期间舆情进行分析。"/>
-
     <!-- 浏览器图标 -->
-    <link rel="icon" href="img/icon.jpg">
+    <link rel="icon" href="resources/static/img/icon.jpg">
 
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!--引入Vue.js-->
+    <script src="resources/static/js/vue.js"></script>
+    <!--引入axios.js-->
+    <script src="resources/static/js/axios.min.js"></script>
+    <!-- 引入Echarts-->
+    <script src="resources/static/js/echarts.min.js"></script>
+    <!-- 地图 -->
+    <script src="resources/static/js/china.js"></script>
 </head>
 <body>
-<div id="app">
-    <el-container>
-<!--        头部-->
-        <el-header>
-            <el-row :gutter="5" class="header-row">
-                <el-col :span="4"><div class="grid-content bg-purple">
-                    <el-image
-                            style="width: 100px; height: 60px"
-                            :src="url"
-                            :fit="fit"></el-image>
-                </div></el-col>
-                <el-col :span="4"><div class="grid-content bg-purple">
-                    <el-link :underline="false" href="#">功能1</el-link>
-                </div></el-col>
-                <el-col :span="4"><div class="grid-content bg-purple">
-                    <el-link :underline="false" href="#">功能2</el-link>
-                </div></el-col>
-                <el-col :span="4"><div class="grid-content bg-purple">
-                    <el-link :underline="false" href="#">功能3</el-link>
-                </div></el-col>
-            </el-row>
-        </el-header>
-<!--        地图区域-->
-        <el-main>Main</el-main>
-<!--        尾部-->
-        <el-footer>Footer</el-footer>
-    </el-container>
-</div>
+<div id="map" style="height: 800px;width:1200px;background:white;margin:20px 0 0;"></div>
+
+<script src="script/map/mapInit.js"></script>
 </body>
-<!-- import Vue before Element -->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<!-- 引入组件库 -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<!-- import JavaScript -->
-<script src = "script/main.js"></script>
 </html>

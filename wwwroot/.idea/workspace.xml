@@ -20,7 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b87a692-7546-4e6f-b66c-87fab43e1d21" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/t.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/icon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/img/icon.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/whu.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/img/whu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/echarts.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/js/echarts.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/jquery-1.11.3.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/js/jquery-1.11.3.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/map/china.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/js/china.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/map/mapInit.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/map/mapInit.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +63,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/script" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/static/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -66,14 +75,27 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\map" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\css" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script" />
       <recent name="$PROJECT_DIR$/img" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="mapInit.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/script/map/mapInit.js" working-dir="$PROJECT_DIR$/script/map">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.mapInit.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -87,7 +109,7 @@
       <updated>1594257101162</updated>
       <workItem from="1594257102439" duration="1826000" />
       <workItem from="1594296596992" duration="6025000" />
-      <workItem from="1594431749878" duration="4288000" />
+      <workItem from="1594431749878" duration="14512000" />
     </task>
     <servers />
   </component>
@@ -108,10 +130,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1594373045332">
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1594448325661">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1060" y="455" key="FileChooserDialogImpl/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594373045332" />
+    <state x="1060" y="455" key="FileChooserDialogImpl/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594448325661" />
     <state x="229" y="69" key="SettingsEditor" timestamp="1594300202435">
       <screen x="0" y="23" width="1440" height="816" />
     </state>
@@ -120,9 +142,9 @@
       <screen x="0" y="23" width="1440" height="812" />
     </state>
     <state x="21" y="23" width="1419" height="793" key="dock-window-1/0.23.1440.812@0.23.1440.812" timestamp="1594301614315" />
-    <state x="936" y="330" key="run.anything.popup" timestamp="1594434609315">
+    <state x="936" y="330" key="run.anything.popup" timestamp="1594451722324">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="936" y="330" key="run.anything.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594434609315" />
+    <state x="936" y="330" key="run.anything.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594451722324" />
   </component>
 </project>
