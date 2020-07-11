@@ -1,28 +1,34 @@
 let myChart = echarts.init(document.getElementById('map'));
-myChart.showLoading();
 
 const baseUrl = '/api/map';
 
 let dataCertainDay = [];
+let timeSeries = getTimeSeriesArray();
 
 let getCertainDay = function (date) {
+    myChart.showLoading();
+
     let url = baseUrl + '/province/certainDay';
     url = url + '?date=' + date;
     axios.get(url)
         .then(function (response) {
+            dataCertainDay.splice(0, dataCertainDay.length);
+
             response.data.forEach(province => dataCertainDay.push(new ProvinceDataUnit(province.provinceShortName, province.confirmedCount)));
+            console.log(dataCertainDay);
             myChart.hideLoading();
 
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
         })
-}
+};
 
 let option = {
     baseOption: {
         timeline: {
             axisType: 'time',
-            currentIndex: 0,
+            data: timeSeries,
+            playInterval: 500
         },
         title: {
             text: 'China COVID-19 Visualization, 25 January - 31 March',
@@ -101,4 +107,9 @@ let option = {
     }
 };
 
-getCertainDay('2020/3/25');
+myChart.on('timelinechanged', function (timelineIndex) {
+    let arrIndex = parseInt(timelineIndex.currentIndex);
+    getCertainDay(timeSeries[arrIndex]);
+});
+
+getCertainDay(timeSeries[0]);
