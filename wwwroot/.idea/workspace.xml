@@ -20,16 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b87a692-7546-4e6f-b66c-87fab43e1d21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/t.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/WebApi.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/icon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/img/icon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/whu.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/img/whu.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/echarts.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/js/echarts.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/jquery-1.11.3.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/js/jquery-1.11.3.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/map/china.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/static/js/china.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/js/jquery-1.11.3.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/script/map/mapInit.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/map/mapInit.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,11 +69,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\tools" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\map" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\css" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
@@ -109,7 +103,7 @@
       <updated>1594257101162</updated>
       <workItem from="1594257102439" duration="1826000" />
       <workItem from="1594296596992" duration="6025000" />
-      <workItem from="1594431749878" duration="14512000" />
+      <workItem from="1594431749878" duration="19763000" />
     </task>
     <servers />
   </component>
