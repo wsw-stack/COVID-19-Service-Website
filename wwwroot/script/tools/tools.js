@@ -5,27 +5,19 @@ class ProvinceDataUnit {
     }
 }
 
-let dateToString = function (date) {
-    return date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+let getNewDate = function (year, month, day) {
+    return new Date(year, month - 1, day);
 }
 
-let addOneDay = function (date) {
-    let month = date.getMonth();
-    let day = date.getDate();
+let dateToString = function (date) {
+    return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
+}
 
-    if (month === 2) {
-        if (day === 29) {
-            month += 1;
-            day = 1;
-        }
-    } else if (month === 1) {
-        if (day === 31) {
-            month += 1;
-            day = 1
-        }
-    }
+let addDays = function (date, days) {
+    let value = date.getTime();
+    value += days * 24 * 3600 * 1000;
 
-    return new Date(2020, month, day);
+    return new Date(value);
 }
 
 let compareDate = function (date1, date2) {
@@ -38,4 +30,17 @@ let compareDate = function (date1, date2) {
     }
 
     return date1.getTime() - date2.getTime();
+}
+
+let getTimeSeriesArray = function () {
+    let timeSeries = []
+
+    let startDate = getNewDate(2020,1,25)
+    let endDate = getNewDate(2020,3,31);
+
+    for (let time = startDate; compareDate(endDate, time) >= 0; time = addDays(time, 1)) {
+        timeSeries.push(dateToString(time));
+    }
+
+    return timeSeries;
 }

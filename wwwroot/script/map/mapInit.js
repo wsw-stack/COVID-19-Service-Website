@@ -21,11 +21,8 @@ let getCertainDay = function (date) {
 let option = {
     baseOption: {
         timeline: {
-            axisType:'time',
-            currentIndex:0,
-            data:[
-                '1/25','1/26','1/27'
-            ]
+            axisType: 'time',
+            currentIndex: 0,
         },
         title: {
             text: 'China COVID-19 Visualization, 25 January - 31 March',
