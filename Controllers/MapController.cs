@@ -60,7 +60,7 @@ namespace WebApi.Controllers
         [HttpGet("province/timeSeries")]
         public ActionResult<List<Province>> GetProvinceSeriesData(string provinceName)
         {
-            var query = mapDb.Provinces.Where(s => s.ProvinceShortName == provinceName);
+            var query = mapDb.Provinces.Where(s => s.ProvinceShortName == provinceName).OrderBy(s => s.UpdateTime);
             if (query == null)
             {
                 return NotFound();
@@ -131,7 +131,7 @@ namespace WebApi.Controllers
         [HttpGet("country/timeSeries")]
         public ActionResult<List<Province>> GetOverallTimeSeries()
         {
-            var query = mapDb.Provinces.Where(s => s.ProvinceShortName == "中国");
+            var query = mapDb.Provinces.Where(s => s.ProvinceShortName == "中国").OrderBy(s => s.UpdateTime);
             if (query == null)
             {
                 return NotFound();

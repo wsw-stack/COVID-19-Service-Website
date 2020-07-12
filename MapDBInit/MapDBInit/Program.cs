@@ -91,7 +91,7 @@ namespace MapDBInit
                 jsonData = reader.ReadToEnd();
                 provinces = JsonConvert.DeserializeObject<List<Province>>(jsonData);
 
-                var provincesOverall = provinces.Where(s => s.CurrentConfirmedCount >= 0 && s.UpdateTime < DateToTicks(endDate)).ToList();
+                var provincesOverall = provinces.Where(s => s.CurrentConfirmedCount >= 0 && s.UpdateTime < DateToTicks(endDate) && s.UpdateTime >= DateToTicks(startDate)).ToList();
                 foreach (var provinceOverall in provincesOverall)
                 {
                     provinceOverall.CountryName = "中国";
