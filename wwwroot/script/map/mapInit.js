@@ -1,6 +1,7 @@
 let mapChart = echarts.init(document.getElementById('map_task1'));
 let lineChart = echarts.init(document.getElementById('lineChart_task1'));
 
+// 基本方法
 function showLoading() {
     mapChart.showLoading();
     lineChart.showLoading();
@@ -16,28 +17,69 @@ function setOption() {
     lineChart.setOption(lineChartOption);
 }
 
-const baseUrl = '/api/map';
+function overallDataInit() {
+    confirmedOverall.splice(0, confirmedOverall.length);
+    curedOverall.splice(0, curedOverall.length);
+    deadOverall.splice(0, deadOverall.length);
+    currentConfirmedOverall.splice(0, currentConfirmedOverall.length);
+}
 
-let dataCertainDay = [];
+// 字段定义
+const baseUrl = '/api/map';
+let mapData = [];
+let confirmedOverall = [];
+let curedOverall = [];
+let deadOverall = [];
+let currentConfirmedOverall = [];
 let timeSeries = getTimeSeriesArray(3);
 
+// 业务逻辑
+
+// 获取特定日期的各省数据并渲染
 let getCertainDay = function (date) {
-    showLoading();  // 显示loading
+    mapChart.showLoading();
 
     let url = baseUrl + '/province/certainDay';
     url = url + '?date=' + date;
+
+    // 调用后端web api
     axios.get(url)
         .then(function (response) {
-            dataCertainDay.splice(0, dataCertainDay.length);
+            mapData.splice(0, mapData.length);
 
             // 将后端返回数据进行填充
-            response.data.forEach(province => dataCertainDay.push(new ProvinceDataUnit(province.provinceShortName, province.confirmedCount)));
+            response.data.forEach(province => mapData.push(new ProvinceDataUnit(province.provinceShortName, province.confirmedCount)));
 
-            hideLoading();      // 隐藏loading
-            setOption();        // 使用刚指定的配置项和数据显示图表。
+            mapChart.hideLoading();
+            mapChart.setOption(mapOption);
+        });
+};
+
+// 获取全国的时间序列数据，用于渲染线状图
+let getDaraOverall = function () {
+    lineChart.showLoading();
+
+    let url = baseUrl + '/country/timeSeries';
+
+    // 调用后端web api
+    axios.get(url)
+        .then(function (response) {
+            overallDataInit();
+
+            // 将后端返回数据进行填充
+            response.data.forEach(s => {
+                confirmedOverall.push(s.confirmedCount);
+                curedOverall.push(s.curedCount);
+                deadOverall.push(s.deadCount);
+                currentConfirmedOverall.push(s.currentConfirmedCount);
+
+                lineChart.hideLoading();
+                lineChart.setOption(lineChartOption);
+            })
         })
 };
 
+// echarts options
 let mapOption = {
     baseOption: {
         timeline: {
@@ -109,7 +151,7 @@ let mapOption = {
                         areaColor: "#fffe13",
                     }
                 },
-                data: dataCertainDay
+                data: mapDataCertainDay
             }
         ],
         toolbox: {
@@ -127,44 +169,23 @@ let mapOption = {
 };
 
 let lineChartOption = {
-    legend: {},
+    legend: {
+        data: ['累计确诊', '累计死亡', '累计治愈', '现存确诊']
+    },
     tooltip: {
         trigger: 'axis',
         showContent: false
-    },
-    dataset: {
-        source: [
-            ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
-            ['Matcha Latte', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
-            ['Milk Tea', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
-            ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
-            ['Walnut Brownie', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
-        ]
     },
     xAxis: {type: 'category'},
     yAxis: {gridIndex: 0},
     grid: {top: '55%'},
     series: [
-        {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-        {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-        {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-        {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-        {
-            type: 'pie',
-            id: 'pie',
-            radius: '30%',
-            center: ['50%', '25%'],
-            label: {
-                formatter: '{b}: {@2012} ({d}%)'
-            },
-            encode: {
-                itemName: 'product',
-                value: '2012',
-                tooltip: '2012'
-            }
-        }
+        {type: 'line', smooth: true, seriesLayoutBy: 'row', data: confirmedOverall},
+        {type: 'line', smooth: true, seriesLayoutBy: 'row', data: deadOverall},
+        {type: 'line', smooth: true, seriesLayoutBy: 'row', data: curedOverall},
+        {type: 'line', smooth: true, seriesLayoutBy: 'row', data: currentConfirmedOverall}
     ]
-}
+};
 
 <!--事件-->
 mapChart.on('timelinechanged', function (timelineIndex) {
@@ -191,5 +212,6 @@ lineChart.on('updateAxisPointer', function (event) {
     }
 });
 
+getDaraOverall();
 getCertainDay(dateToString(timeSeries.startDate));
 lineChart.setOption(lineChartOption);
