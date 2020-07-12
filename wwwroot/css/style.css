@@ -35,3 +35,10 @@
     margin: 20px 40px;
     float: right;
 }
+
+#pieChart_task1{
+    height: 600px;
+    width: 600px;
+    float: left;
+    margin: 50px 300px 50px;
+}
