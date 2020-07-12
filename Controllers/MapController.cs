@@ -76,7 +76,7 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        /// <route>GET: api/map/provnce/certainDay?date=2020/3/14</route>
+        /// <route>GET: api/map/province/certainDay?date=2020/3/14</route>
         [HttpGet("province/certainDay")]
         public ActionResult<List<Province>> GetAllProvinceDataCertainDay(string date)
         {
@@ -95,6 +95,44 @@ namespace WebApi.Controllers
             {
                 return query.ToList();
             }
+        }
+
+        /// <summary>
+        /// 返回特定日期特定条件下前10省的疫情数据
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        /// <route>GET: api/map/province/top10?key=累计确诊&&date=2020/3/14</route>
+        [HttpGet("province/top10")]
+        public ActionResult<List<Province>> GetTopTenProvinces(string key, string date)
+        {
+            string pattern = @"2020/[0-9]+/[0-9]+$";
+            if (!Regex.IsMatch(date, pattern))
+            {
+                return BadRequest();
+            }
+
+            var query = mapDb.Provinces.Where(s => s.Date == date && s.ProvinceShortName != "中国");
+            switch (key)
+            {
+                case ("累计确诊"):
+                    query = query.OrderByDescending(s => s.ConfirmedCount);
+                    break;
+                case ("累计治愈"):
+                    query = query.OrderByDescending(s => s.CuredCount);
+                    break;
+                case ("累计死亡"):
+                    query = query.OrderByDescending(s => s.DeadCount);
+                    break;
+                case ("当前确诊"):
+                    query = query.OrderByDescending(s => s.CurrentConfirmedCount);
+                    break;
+                default:
+                    return NotFound();
+            }
+
+            return query.ToList();
         }
 
         /// <summary>
