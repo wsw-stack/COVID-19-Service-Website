@@ -32,16 +32,16 @@ let confirmedOverall = [];
 let curedOverall = [];
 let deadOverall = [];
 let currentConfirmedOverall = [];
-let timeSeries = getTimeSeriesArray(step);
+let timeSeries = getTimeSeriesArray(step);      // timeSeries对象，包含两个属性:timeSeries（日期格式：yyyy/m/d）和timeViewSeries（日期格式：m/d）
 
 // 业务逻辑
 
 // 获取特定日期的各省数据并渲染
-let getCertainDay = function (date) {
+let getCertainDay = function (dateIndex) {
     mapChart.showLoading();
 
     let url = baseUrl + '/province/certainDay';
-    url = url + '?date=' + date;
+    url = url + '?date=' + timeSeries.timeSeries[dateIndex];
 
     // 调用后端web api
     axios.get(url)
@@ -52,6 +52,7 @@ let getCertainDay = function (date) {
             response.data.forEach(province => mapData.push(new ProvinceDataUnit(province.provinceShortName, province.confirmedCount)));
 
             mapChart.hideLoading();
+            mapOption.baseOption.timeline.currentIndex = dateIndex;
             mapChart.setOption(mapOption);
         });
 };
@@ -85,8 +86,6 @@ let getDataOverall = function (step = 3) {
                 i++;
 
             });
-
-            console.log(confirmedOverall);
 
             lineChart.hideLoading();
             lineChart.setOption(lineChartOption);
@@ -190,7 +189,12 @@ let lineChartOption = {
         trigger: 'axis',
         showContent: false
     },
-    xAxis: {type: 'category'},
+    xAxis: {
+        type: 'category',
+        data: timeSeries.timeSeriesView,
+        nameLocation: 'end',
+        splitNumber: timeSeries.timeSeriesView.length,
+    },
     yAxis: {gridIndex: 0},
     series: [
         {type: 'line', smooth: true, seriesLayoutBy: 'row', data: confirmedOverall},
@@ -203,28 +207,17 @@ let lineChartOption = {
 // 事件
 mapChart.on('timelinechanged', function (timelineIndex) {
     let arrIndex = parseInt(timelineIndex.currentIndex);
-    getCertainDay(timeSeries.timeSeries[arrIndex]);
+    getCertainDay(arrIndex);
 });
 
 lineChart.on('updateAxisPointer', function (event) {
     let xAxisInfo = event.axesInfo[0];
     if (xAxisInfo) {
-        let dimension = xAxisInfo.value + 1;
-        lineChart.setOption({
-            series: {
-                id: 'pie',
-                label: {
-                    formatter: '{b}: {@[' + dimension + ']} ({d}%)'
-                },
-                encode: {
-                    value: dimension,
-                    tooltip: dimension
-                }
-            }
-        });
+        let dimension = xAxisInfo.value;
+        getCertainDay(dimension);
     }
 });
 
 getDataOverall(step);
-getCertainDay(dateToString(timeSeries.startDate));
+getCertainDay(0);
 lineChart.setOption(lineChartOption);
