@@ -132,7 +132,7 @@ namespace WebApi.Controllers
                     return NotFound();
             }
 
-            return query.ToList();
+            return query.Take(10).ToList();
         }
 
         /// <summary>
