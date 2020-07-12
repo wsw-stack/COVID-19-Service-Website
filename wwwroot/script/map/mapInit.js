@@ -182,25 +182,29 @@ let mapOption = {
 };
 
 let lineChartOption = {
+    title: {
+        text: '全国疫情趋势'
+    },
     legend: {
-        data: ['累计确诊', '累计死亡', '累计治愈', '现存确诊']
+        data: ['累计确诊', '累计死亡', '累计治愈', '现存确诊'],
     },
     tooltip: {
         trigger: 'axis',
-        showContent: false
+        showContent: true,
     },
     xAxis: {
         type: 'category',
         data: timeSeries.timeSeriesView,
-        nameLocation: 'end',
-        splitNumber: timeSeries.timeSeriesView.length,
+        splitLine:{
+            show:false
+        },
     },
     yAxis: {gridIndex: 0},
     series: [
-        {type: 'line', smooth: true, seriesLayoutBy: 'row', data: confirmedOverall},
-        {type: 'line', smooth: true, seriesLayoutBy: 'row', data: deadOverall},
-        {type: 'line', smooth: true, seriesLayoutBy: 'row', data: curedOverall},
-        {type: 'line', smooth: true, seriesLayoutBy: 'row', data: currentConfirmedOverall}
+        {name: '累计确诊', type: 'line', smooth: true, seriesLayoutBy: 'row', data: confirmedOverall},
+        {name: '累计死亡', type: 'line', smooth: true, seriesLayoutBy: 'row', data: deadOverall},
+        {name: '累计治愈', type: 'line', smooth: true, seriesLayoutBy: 'row', data: curedOverall},
+        {name: '现存确诊', type: 'line', smooth: true, seriesLayoutBy: 'row', data: currentConfirmedOverall}
     ]
 };
 
