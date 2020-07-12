@@ -1,9 +1,9 @@
 .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-}
+     background-color: #B3C0D1;
+     color: #333;
+     text-align: center;
+     line-height: 60px;
+ }
 
 .el-main {
     background-color: #E9EEF3;
@@ -17,12 +17,21 @@
     width: 1200px;
     background: white;
     margin: 20px 0 0;
-    float: left
+    float: left;
+    overflow: hidden;
 }
 
 #lineChart_task1 {
-    height:600px;
+    height: 600px;
     width: 600px;
     margin: 20px 40px;
-    float: right
+    float: right;
+    overflow: hidden;
+}
+
+#barChart_task1 {
+    height: 600px;
+    width: 600px;
+    margin: 20px 40px;
+    float: right;
 }
