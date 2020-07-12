@@ -45,8 +45,9 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseDefaultFiles(); //����ȱʡ��̬�ļ���index.html��index.htm��
-            app.UseStaticFiles(); //������̬�ļ���ҳ�桢js��ͼƬ�ȸ���ǰ���ļ���
+            app.UseDefaultFiles();
+            
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 

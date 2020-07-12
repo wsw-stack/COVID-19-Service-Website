@@ -260,8 +260,6 @@ namespace WebApi.Controllers
                     }
                 }
             }
-
-            return null;
         }
 
         private static MySqlConnection GetConnection()

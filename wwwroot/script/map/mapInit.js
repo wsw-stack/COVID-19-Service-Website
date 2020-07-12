@@ -187,7 +187,7 @@ let lineChartOption = {
     ]
 };
 
-<!--事件-->
+// 事件
 mapChart.on('timelinechanged', function (timelineIndex) {
     let arrIndex = parseInt(timelineIndex.currentIndex);
     getCertainDay(timeSeries.timeSeries[arrIndex]);
