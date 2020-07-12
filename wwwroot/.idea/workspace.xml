@@ -20,9 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b87a692-7546-4e6f-b66c-87fab43e1d21" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.vs/WebApi/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../.vs/WebApi/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.vs/WebApi/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../.vs/WebApi/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../bin/Debug/netcoreapp3.1/WebApi.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/netcoreapp3.1/WebApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/script/map/mapInit.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/map/mapInit.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,17 +72,17 @@
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\tools" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\map" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script" />
       <recent name="$PROJECT_DIR$/img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\map" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\tools" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -104,7 +109,8 @@
       <workItem from="1594296596992" duration="6025000" />
       <workItem from="1594431749878" duration="22741000" />
       <workItem from="1594466556521" duration="5630000" />
-      <workItem from="1594516389923" duration="3272000" />
+      <workItem from="1594516389923" duration="3882000" />
+      <workItem from="1594521059998" duration="3205000" />
     </task>
     <servers />
   </component>

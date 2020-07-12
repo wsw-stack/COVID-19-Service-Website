@@ -25,13 +25,14 @@ function overallDataInit() {
 }
 
 // 字段定义
+let step = 3;
 const baseUrl = '/api/map';
 let mapData = [];
 let confirmedOverall = [];
 let curedOverall = [];
 let deadOverall = [];
 let currentConfirmedOverall = [];
-let timeSeries = getTimeSeriesArray(3);
+let timeSeries = getTimeSeriesArray(step);
 
 // 业务逻辑
 
@@ -56,10 +57,11 @@ let getCertainDay = function (date) {
 };
 
 // 获取全国的时间序列数据，用于渲染线状图
-let getDaraOverall = function () {
+let getDataOverall = function (step = 3) {
     lineChart.showLoading();
 
     let url = baseUrl + '/country/timeSeries';
+    console.log(url);
 
     // 调用后端web api
     axios.get(url)
@@ -67,15 +69,27 @@ let getDaraOverall = function () {
             overallDataInit();
 
             // 将后端返回数据进行填充
+            let i = 0;
             response.data.forEach(s => {
-                confirmedOverall.push(s.confirmedCount);
-                curedOverall.push(s.curedCount);
-                deadOverall.push(s.deadCount);
-                currentConfirmedOverall.push(s.currentConfirmedCount);
+                if (i % step === 0) {
+                    confirmedOverall.push(s.confirmedCount);
+                    curedOverall.push(s.curedCount);
+                    deadOverall.push(s.deadCount);
+                    if (s.currentConfirmedCount === 0) {
+                        let count = s.confirmedCount - s.curedCount - s.deadCount;
+                        currentConfirmedOverall.push(count);
+                    } else {
+                        currentConfirmedOverall.push(s.currentConfirmedCount);
+                    }
+                }
+                i++;
 
-                lineChart.hideLoading();
-                lineChart.setOption(lineChartOption);
-            })
+            });
+
+            console.log(confirmedOverall);
+
+            lineChart.hideLoading();
+            lineChart.setOption(lineChartOption);
         })
 };
 
@@ -151,7 +165,7 @@ let mapOption = {
                         areaColor: "#fffe13",
                     }
                 },
-                data: mapDataCertainDay
+                data: mapData
             }
         ],
         toolbox: {
@@ -178,7 +192,6 @@ let lineChartOption = {
     },
     xAxis: {type: 'category'},
     yAxis: {gridIndex: 0},
-    grid: {top: '55%'},
     series: [
         {type: 'line', smooth: true, seriesLayoutBy: 'row', data: confirmedOverall},
         {type: 'line', smooth: true, seriesLayoutBy: 'row', data: deadOverall},
@@ -212,6 +225,6 @@ lineChart.on('updateAxisPointer', function (event) {
     }
 });
 
-getDaraOverall();
+getDataOverall(step);
 getCertainDay(dateToString(timeSeries.startDate));
 lineChart.setOption(lineChartOption);
