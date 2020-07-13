@@ -2,8 +2,16 @@ let mapChart = echarts.init(document.getElementById('map_task1'));
 let lineChart = echarts.init(document.getElementById('lineChart_task1'));
 let barChart = echarts.init(document.getElementById('barChart_task1'));
 let pieChart = echarts.init(document.getElementById('pieChart_task1'));
+let overallDailyPieChart = echarts.init(document.getElementById('overallPieChart_task1'));
 
 // 基本方法
+function mapDataInit() {
+    confirmedMap.splice(0, confirmedMap.length);
+    curedMap.splice(0, curedMap.length);
+    deadMap.splice(0, deadMap.length);
+    currentConfirmedMap.splice(0, currentConfirmedMap.length);
+}
+
 function overallDataInit() {
     confirmedOverall.splice(0, confirmedOverall.length);
     curedOverall.splice(0, curedOverall.length);
@@ -28,6 +36,10 @@ function pieInit() {
     currentConfirmedPie.splice(0, currentConfirmedPie.length);
 }
 
+function overallDailyInit() {
+    confirmedOverallDaily = deadOverallDaily = confirmedOverallDaily = currentConfirmedOverallDaily = 0;
+}
+
 // 字段定义
 let step = 3;
 const baseUrl = '/api/map';
@@ -35,7 +47,10 @@ let timeSeries = getTimeSeriesArray(step);      // timeSeries对象，包含两�
 let key = '累计确诊';
 
 // map
-let mapData = [];
+let confirmedMap = [];
+let curedMap = [];
+let deadMap = [];
+let currentConfirmedMap = [];
 // linechart
 let confirmedOverall = [];
 let curedOverall = [];
@@ -54,6 +69,12 @@ let confirmedPie = [];
 let curedPie = [];
 let deadPie = [];
 let currentConfirmedPie = [];
+// overall daily data
+let confirmedOverallDaily = 0;
+let deadOverallDaily = 0;
+let curedOverallDaily = 0;
+let currentConfirmedOverallDaily = 0;
+
 
 // 业务逻辑
 
@@ -61,6 +82,7 @@ let currentConfirmedPie = [];
 let getCertainDay = function (key = '累计确诊', dateIndex) {
     getMapAndPieData(key, dateIndex);       // 地图
     getTop10Data(key, dateIndex);    // 柱状图
+    getOverallDataDaily(dateIndex);     // 全国疫情饼图
 };
 
 // 获取特定日期的地图数据
@@ -73,46 +95,49 @@ let getMapAndPieData = function (key, dateIndex) {
     axios.get(url)
         .then(function (response) {
             // 数据初始化
-            mapData.splice(0, mapData.length);
+            mapDataInit();
             pieInit();
 
             // 将后端返回数据进行填充
             response.data.forEach(province => {
-                let value = 0;
+                let currentValue = 0;
+                // switch (key) {
+                //     case('累计确诊'):
+                //         value = province.confirmedCount;
+                //         break;
+                //     case('累计死亡'):
+                //         value = province.deadCount;
+                //         break;
+                //     case('累计治愈'):
+                //         value = province.curedCount;
+                //         break;
+                //     case('当前确诊'):
+                //         if (province.currentConfirmedCount === 0) {
+                //             value = province.confirmedCount - province.deadCount - province.curedCount;
+                //         } else {
+                //             value = province.currentConfirmedCount;
+                //         }
+                //         break;
+                // }
 
-                switch (key) {
-                    case('累计确诊'):
-                        value = province.confirmedCount;
-                        break;
-                    case('累计死亡'):
-                        value = province.deadCount;
-                        break;
-                    case('累计治愈'):
-                        value = province.curedCount;
-                        break;
-                    case('当前确诊'):
-                        if (province.currentConfirmedCount === 0) {
-                            value = province.confirmedCount - province.deadCount - province.curedCount;
-                        } else {
-                            value = province.currentConfirmedCount;
-                        }
-                        break;
+                if (province.currentConfirmedCount === 0) {
+                    currentValue = province.confirmedCount - province.deadCount - province.curedCount;
+                } else {
+                    currentValue = province.currentConfirmedCount;
                 }
 
                 // 填充map数据
-                mapData.push(new ProvinceDataUnit(province.provinceShortName, value));
+                confirmedMap.push(new ProvinceDataUnit(province.provinceShortName, province.confirmedCount));
+                deadMap.push(new ProvinceDataUnit(province.provinceShortName, province.deadCount));
+                curedMap.push(new ProvinceDataUnit(province.provinceShortName, province.curedCount));
+                currentConfirmedMap.push(new ProvinceDataUnit(province.provinceShortName, currentValue));
                 // 填充pie数据
                 if (province.provinceShortName !== '湖北') {
                     allNames.push(province.provinceShortName);
                     confirmedPie.push(province.confirmedCount);
                     deadPie.push(province.deadCount);
                     curedPie.push(province.curedCount);
-                    if (province.currentConfirmedCount === 0) {
-                        value = province.confirmedCount - province.deadCount - province.curedCount;
-                    } else {
-                        value = province.currentConfirmedCount;
-                    }
-                    currentConfirmedPie.push(value);
+                    currentConfirmedPie.push(currentValue);
                 }
             });
 
@@ -148,10 +173,8 @@ let getDataOverall = function (step = 3) {
                     }
                 }
                 i++;
-
             });
 
-            lineChart.hideLoading();
             lineChart.setOption(lineChartOption);
         })
 };
@@ -204,8 +227,26 @@ let getTop10Data = function (key, dateIndex) {
                 pieData.push({name: s.provinceShortName, value: top_value});
             });
 
-            barChart.hideLoading();
             barChart.setOption(barChartOption);
+        })
+};
+
+// 获取特定日期的全国病例数据，用于渲染overall pie
+let getOverallDataDaily = function (dateIndex) {
+    let url = baseUrl + '/country/certainDay'
+    url = url + '?date=' + timeSeries.timeSeries[dateIndex];
+
+    // 调用后端web api
+    axios.get(url)
+        .then(function (response) {
+            overallDataInit();
+
+            confirmedOverallDaily = province.confirmedCount;
+            deadOverallDaily = province.deadCount;
+            curedOverallDaily = province.curedCount;
+            currentConfirmedOverallDaily = province.currentConfirmedCount;
+
+            overallDailyPieChart.setOption(overallDailyPieOption);
         })
 };
 
@@ -256,19 +297,19 @@ let mapOption = {
             },
             calculable: true
         },
+        label: {
+            emphasis: {
+                show: true, //对应的鼠标悬浮效果
+                // textStyle:{color:"#800080"}
+            }
+        },
         series: [
             {
-                name: '中国COVID-19可视化',
+                name: '累计确诊',
                 type: 'map',
                 roam: true,
                 mapType: 'china',
-
-                label: {
-                    emphasis: {
-                        show: true, //对应的鼠标悬浮效果
-                        // textStyle:{color:"#800080"}
-                    }
-                },
+                showLegendSymbol: false,
                 itemStyle: {
                     normal: {
                         borderWidth: .5, //区域边框宽度
@@ -281,20 +322,92 @@ let mapOption = {
                         areaColor: "#fffe13",
                     }
                 },
-                data: mapData
-            }
+                data: confirmedMap
+            },
+            {
+                name: '累计死亡',
+                type: 'map',
+                roam: true,
+                mapType: 'china',
+                showLegendSymbol: false,
+                itemStyle: {
+                    normal: {
+                        borderWidth: .5, //区域边框宽度
+                        borderColor: '#827a82', //区域边框颜色
+                        areaColor: '#fff', //区域颜色
+                    },
+                    emphasis: {
+                        borderWidth: .5,
+                        borderColor: '#827a82',
+                        areaColor: "#fffe13",
+                    }
+                },
+                data: deadMap
+            },
+            {
+                name: '累计治愈',
+                type: 'map',
+                roam: true,
+                mapType: 'china',
+                showLegendSymbol: false,
+                itemStyle: {
+                    normal: {
+                        borderWidth: .5, //区域边框宽度
+                        borderColor: '#827a82', //区域边框颜色
+                        areaColor: '#fff', //区域颜色
+                    },
+                    emphasis: {
+                        borderWidth: .5,
+                        borderColor: '#827a82',
+                        areaColor: "#fffe13",
+                    }
+                },
+                data: curedMap
+            },
+            {
+                name: '现存确诊',
+                type: 'map',
+                roam: true,
+                mapType: 'china',
+                showLegendSymbol: false,
+                itemStyle: {
+                    normal: {
+                        borderWidth: .5, //区域边框宽度
+                        borderColor: '#827a82', //区域边框颜色
+                        areaColor: '#fff', //区域颜色
+                    },
+                    emphasis: {
+                        borderWidth: .5,
+                        borderColor: '#827a82',
+                        areaColor: "#fffe13",
+                    }
+                },
+                data: currentConfirmedMap
+            },
         ],
         toolbox: {
             show: true,
             //orient: 'vertical',
             left: 'left',
-            top: 'top',
+            top: 'bottom',
             feature: {
                 dataView: {readOnly: true},
                 restore: {},
                 saveAsImage: {}
             }
         },
+        legend: {
+            data: ['累计确诊', '累计死亡', '累计治愈', '现存确诊'],
+            left: '5%',
+            orient: 'vertical',
+            selectedMode: 'single',
+            emphasis: {
+                selectorLabel: {
+                    show: false,
+                }
+            }
+        },
+        color: ['#8B008B']
     }
 };
 
@@ -362,9 +475,9 @@ let barChartOption = {
         {
             type: 'pie',
             name: '湖北省占比',
-            center: ['55%', '65%'],
+            center: ['60%', '65%'],
             radius: '30%',
-            seletedMode: 'single',
+            selectedMode: 'single',
             data: pieData,
             hoverAnimation: false,
             label: {
@@ -423,6 +536,20 @@ let pieChartOption = {
     color: ['#c23531', '#61a0a8', '#2f4554']
 };
 
+let overallDailyPieOption = {
+    series: [
+        {
+            name: '全国当日疫情',
+            type: 'pie',
+            data: [
+                {value: currentConfirmedOverallDaily, name: '当前确诊'},
+                {value: deadOverallDaily, name: '累计死亡'},
+                {value: curedOverallDaily, name: '累计治愈'}
+            ]
+        }
+    ]
+};
+
 // 事件
 mapChart.on('timelinechanged', function (timelineIndex) {
     let arrIndex = parseInt(timelineIndex.currentIndex);
@@ -439,4 +566,3 @@ lineChart.on('updateAxisPointer', function (event) {
 
 getDataOverall(step);
 getCertainDay(key, 0);
-lineChart.setOption(lineChartOption);
