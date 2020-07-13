@@ -37,7 +37,7 @@ function pieInit() {
 }
 
 function overallDailyInit() {
-    confirmedOverallDaily = deadOverallDaily = confirmedOverallDaily = currentConfirmedOverallDaily = 0;
+    overallDaily.splice(0, overallDaily.length);
 }
 
 // 字段定义
@@ -70,10 +70,7 @@ let curedPie = [];
 let deadPie = [];
 let currentConfirmedPie = [];
 // overall daily data
-let confirmedOverallDaily = 0;
-let deadOverallDaily = 0;
-let curedOverallDaily = 0;
-let currentConfirmedOverallDaily = 0;
+let overallDaily = [];
 
 
 // 业务逻辑
@@ -239,12 +236,23 @@ let getOverallDataDaily = function (dateIndex) {
     // 调用后端web api
     axios.get(url)
         .then(function (response) {
-            overallDataInit();
+            overallDailyInit();
 
-            confirmedOverallDaily = province.confirmedCount;
-            deadOverallDaily = province.deadCount;
-            curedOverallDaily = province.curedCount;
-            currentConfirmedOverallDaily = province.currentConfirmedCount;
+            let confirmedOverallDaily = response.data.confirmedCount;
+            let deadOverallDaily = response.data.deadCount;
+            let curedOverallDaily = response.data.curedCount;
+            let currentConfirmedOverallDaily = 0;
+            if (response.data.currentConfirmedCount === 0) {
+                currentConfirmedOverallDaily = confirmedOverallDaily - deadOverallDaily - curedOverallDaily;
+            } else {
+                currentConfirmedOverallDaily = response.data.currentConfirmedCount;
+            }
+
+            console.log(confirmedOverallDaily + ', ' + deadOverallDaily + ',' + curedOverallDaily + ',' + currentConfirmedOverallDaily);
+
+            overallDaily.push({name: '当前确诊', value: currentConfirmedOverallDaily});
+            overallDaily.push({name: '累计死亡', value: deadOverallDaily});
+            overallDaily.push({name: '累计治愈', value: curedOverallDaily});
 
             overallDailyPieChart.setOption(overallDailyPieOption);
         })
@@ -439,6 +447,9 @@ let lineChartOption = {
 };
 
 let barChartOption = {
+    title: {
+        text: '疫情排名Top10'
+    },
     tooltip: {
         trigger: 'axis',
         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -474,7 +485,7 @@ let barChartOption = {
         },
         {
             type: 'pie',
-            name: '湖北省占比',
+            name: '各省市占比',
             center: ['60%', '65%'],
             radius: '30%',
             selectedMode: 'single',
@@ -490,18 +501,37 @@ let barChartOption = {
         }
     ],
     legend: {
-        data: ['累计确诊', '累计死亡', '累计治愈']
+        data: ['累计确诊', '累计死亡', '累计治愈'],
+        top: '3%'
     }
 };
 
 let pieChartOption = {
-    angleAxis: {
-        type: 'category',
-        data: allNames
+    title: {
+        text: '除湖北外各省疫情'
     },
-    barMinHeight: 50000,
+    angleAxis: {
+        show: true,
+        type: 'category',
+        data: allNames,
+        splitLine: {
+            show: true,
+            lineStyle: {
+                color: '#999',
+                type: 'dashed'
+            }
+        },
+        axisLine: {
+            show: false
+        },
+        axisLabel: {
+            interval: 0
+        }
+    },
     radiusAxis: {},
-    polar: {},
+    polar: {
+        radius:'70%'
+    },
     tooltip: {
         show: true,
         formatter: function (params) {
@@ -516,7 +546,6 @@ let pieChartOption = {
         name: '累计确诊',
         stack: 'a'
     }, {
-
         type: 'bar',
         data: curedPie,
         coordinateSystem: 'polar',
@@ -531,21 +560,29 @@ let pieChartOption = {
     }],
     legend: {
         show: true,
-        data: ['累计确诊', '累计治愈', '累计死亡']
+        data: ['累计确诊', '累计治愈', '累计死亡'],
+        bottom: '3%',
     },
     color: ['#c23531', '#61a0a8', '#2f4554']
 };
 
 let overallDailyPieOption = {
+    title: {
+        text: '全国疫情比例'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
     series: [
         {
             name: '全国当日疫情',
             type: 'pie',
-            data: [
-                {value: currentConfirmedOverallDaily, name: '当前确诊'},
-                {value: deadOverallDaily, name: '累计死亡'},
-                {value: curedOverallDaily, name: '累计治愈'}
-            ]
+            radius: '40%',
+            data: overallDaily,
+            label: {
+                show: true
+            }
         }
     ]
 };
