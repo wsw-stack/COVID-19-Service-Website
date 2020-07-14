@@ -76,6 +76,5 @@ if __name__ == "__main__":
         f.close()
 
     #测试
-    render_wordcloud(50).render('wordcloud.html')
-    from weibo_wordData import date_data
-    print(date_data[50][0])
+    for i in range(0,91):
+        render_wordcloud(i).render('wordcloud%d.html'%(i+1))

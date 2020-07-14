@@ -73,7 +73,7 @@ if __name__ == "__main__":
         f.write("date_data="+str(date_words))
         f.close()
 
-    #测试
-    render_wordcloud(2).render('wordcloud.html')
-    from wordData import date_data
-    print(date_data[2][0])
+    #生成词云图
+    for i in range(0,91):
+        render_wordcloud(i).render('wordcloud%d.html'%(i+1))
+
