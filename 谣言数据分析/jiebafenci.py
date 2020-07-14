@@ -5,7 +5,11 @@ import time
 from collections import Counter
 import pandas as pd
 import datetime
-
+from pyecharts  import options as opts
+from pyecharts.charts import WordCloud
+from pyecharts.globals import SymbolType
+from pyecharts.charts import  Timeline
+from pyecharts.faker import Faker
 #------------------------------------中文分词------------------------------------
 #percent = 0-90
 def generatewordData(percent):
@@ -46,9 +50,7 @@ def generatewordData(percent):
 
 # 渲染图
 
-from pyecharts import options as opts
-from pyecharts.charts import WordCloud
-from pyecharts.globals import SymbolType
+
 #import wordData
 
 # percent 0-90
@@ -73,7 +75,15 @@ if __name__ == "__main__":
         f.write("date_data="+str(date_words))
         f.close()
 
-    #生成词云图
-    for i in range(0,91):
-        render_wordcloud(i).render('wordcloud%d.html'%(i+1))
+    # #生成词云图
+    # for i in range(0,91):
+    #     render_wordcloud(i).render('wordcloud%d.html'%(i+1))
 
+     #timeline
+    from wordData import date_data
+    attr = Faker.choose()
+    tl = Timeline()
+    for i in range(0,91):
+        #tl.add(render_wordcloud(i), "{}".format(i))
+        tl.add(render_wordcloud(i),'{}'.format(date_data[int(i)][1]+' - '+date_data[int(i)][2]))
+    tl.render("timeline_wordcloud.html")
