@@ -10,7 +10,7 @@ hierarchy.py ---- 层次聚类分析
 wordData.py ---- 词云数据
 wordcloud.html ---- 词云图
 TF_IDF关键词前50.xlsx ---- tfidf值中间文件
-TF-IDF Ranking.png ---- 值可视化图
+TF-IDF Ranking.png ---- tfidf值可视化图
 C-key.txt ---- 中文分词中间文件 
 Tree_word.png---- 层次聚类分析图
 注：词云数据为多个时间段的数据，可以编写代码通过滑动轴可视化
