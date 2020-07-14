@@ -56,7 +56,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/static/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/static/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -67,17 +67,18 @@
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script" />
-      <recent name="$PROJECT_DIR$/img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\map" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\tools" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\img" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script" />
+      <recent name="$PROJECT_DIR$/img" />
     </key>
   </component>
   <component name="RunManager">
@@ -106,7 +107,7 @@
       <workItem from="1594466556521" duration="5630000" />
       <workItem from="1594516389923" duration="3882000" />
       <workItem from="1594521059998" duration="19212000" />
-      <workItem from="1594610788911" duration="18538000" />
+      <workItem from="1594610788911" duration="23985000" />
     </task>
     <servers />
   </component>
@@ -127,6 +128,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594657165815">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594657165815" />
     <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1594448325661">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -143,9 +148,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="936" y="330" key="run.anything.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594524909150" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1594641596614">
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1594685813901">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594641596614" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594685813901" />
   </component>
 </project>

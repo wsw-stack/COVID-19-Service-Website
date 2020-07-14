@@ -37,19 +37,22 @@
 }
 
 #pieChart_task1 {
-    height: 600px;
-    width: 600px;
+    height: 500px;
+    width: 500px;
     float: left;
     margin: 50px 50px 50px;
 }
 
 #overallPieChart_task1 {
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
     float: left;
-    margin: 50px 50px;
+    margin:10px 50px 0 0;
 }
 
-#liquidChart_task1{
-    height:
+#liquidChart_task1 {
+    height: 250px;
+    width: 250px;
+    float: left;
+    margin: 10px 50px 0 10px;
 }

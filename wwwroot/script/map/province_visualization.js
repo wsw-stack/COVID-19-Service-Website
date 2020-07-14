@@ -3,6 +3,7 @@ let lineChart = echarts.init(document.getElementById('lineChart_task1'));
 let barChart = echarts.init(document.getElementById('barChart_task1'));
 let pieChart = echarts.init(document.getElementById('pieChart_task1'));
 let overallDailyPieChart = echarts.init(document.getElementById('overallPieChart_task1'));
+let liquidChart = echarts.init(document.getElementById('liquidChart_task1'));
 
 // 基本方法
 function mapDataInit() {
@@ -40,6 +41,10 @@ function overallDailyInit() {
     overallDaily.splice(0, overallDaily.length);
 }
 
+function liquidInit() {
+    confirmedRatio_Hubei.splice(0, confirmedRatio_Hubei.length);
+}
+
 // 字段定义
 let step = 3;
 const baseUrl = '/api/map';
@@ -71,6 +76,8 @@ let deadPie = [];
 let currentConfirmedPie = [];
 // overall daily data
 let overallDaily = [];
+// liquid
+let confirmedRatio_Hubei = [];
 
 
 // 业务逻辑
@@ -94,6 +101,7 @@ let getMapAndPieData = function (key, dateIndex) {
             // 数据初始化
             mapDataInit();
             pieInit();
+            liquidInit();
 
             // 将后端返回数据进行填充
             response.data.forEach(province => {
@@ -135,12 +143,16 @@ let getMapAndPieData = function (key, dateIndex) {
                     deadPie.push(province.deadCount);
                     curedPie.push(province.curedCount);
                     currentConfirmedPie.push(currentValue);
+                } else {
+                    confirmedRatio_Hubei.push(province.confirmedCount / 59270000);
+                    console.log(confirmedRatio_Hubei);
                 }
             });
 
             mapOption.baseOption.timeline.currentIndex = dateIndex;
             mapChart.setOption(mapOption);
             pieChart.setOption(pieChartOption);
+            liquidChart.setOption(liquidOption);
         });
 };
 
@@ -247,8 +259,6 @@ let getOverallDataDaily = function (dateIndex) {
             } else {
                 currentConfirmedOverallDaily = response.data.currentConfirmedCount;
             }
-
-            console.log(confirmedOverallDaily + ', ' + deadOverallDaily + ',' + curedOverallDaily + ',' + currentConfirmedOverallDaily);
 
             overallDaily.push({name: '当前确诊', value: currentConfirmedOverallDaily});
             overallDaily.push({name: '累计死亡', value: deadOverallDaily});
@@ -530,7 +540,7 @@ let pieChartOption = {
     },
     radiusAxis: {},
     polar: {
-        radius:'70%'
+        radius: '70%'
     },
     tooltip: {
         show: true,
@@ -578,13 +588,63 @@ let overallDailyPieOption = {
         {
             name: '全国当日疫情',
             type: 'pie',
-            radius: '40%',
+            radius: '50%',
             data: overallDaily,
             label: {
                 show: true
             }
         }
     ]
+};
+
+let liquidOption = {
+    title: {
+        text: '湖北感染占比',
+    },
+    series: [{
+        type: 'liquidFill',
+        name: '武汉累计确诊比例',
+        radius: '60%', // 水球图的半径
+        center: ['50%', '50%'], // 水球图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标
+        shape: 'circle',
+        outline: {
+            show: false,
+            // borderDistance: 0, // 边框线与图表的距离 数字
+            // itemStyle: {
+            //     opacity: 1, // 边框的透明度   默认为 1
+            //     borderWidth: 0, // 边框的宽度
+            //     shadowBlur: 1, // 边框的阴影范围 一旦设置了内外都有阴影
+            //     shadowColor: '#fff', // 边框的阴影颜色,
+            //     borderColor: '#41dcd8' // 边框颜色
+            // }
+        },
+        // 图形样式
+        itemStyle: {
+            color: '#008080', // 水球显示的背景颜色
+            opacity: 0.5, // 波浪的透明度
+            shadowBlur: 10 // 波浪的阴影范围
+        },
+        backgroundStyle: {
+            color: '#00CED1', // 水球未到的背景颜色
+            opacity: 0.5
+        },
+        // 图形的高亮样式
+        emphasis: {
+            itemStyle: {
+                opacity: 0.8 // 鼠标经过波浪颜色的透明度
+            }
+        },
+        // 图形上的文本标签
+        label: {
+            fontSize: 22,
+            fontWeight: 400,
+            color: '#fff',
+            formatter: function (params) {
+                return (params.value * 10000).toFixed(1) + '‱';
+            }
+        },
+        data: confirmedRatio_Hubei,
+    }]
 };
 
 // 事件
