@@ -2,6 +2,10 @@
 
 ![GitHub top language](https://img.shields.io/github/languages/top/ashyseer/COVID-19-Service-Website?color=green) ![GitHub language count](https://img.shields.io/github/languages/count/ashyseer/COVID-19-Service-Website?color=orange)  ![GitHub](https://img.shields.io/github/license/ashyseer/COVID-19-Service-Website?color=blueviolet)  ![GitHub repo size](https://img.shields.io/github/repo-size/ashyseer/COVID-19-Service-Website)  ![GitHub contributors](https://img.shields.io/github/contributors/ashyseer/COVID-19-Service-Website)  ![GitHub last commit](https://img.shields.io/github/last-commit/ashyseer/COVID-19-Service-Website)
 
+## 说明
+
+- 本项目为武汉大学第三学期《计算社会学与社会地理计算》课程大作业仓库，在《GIS可视化》课程上介绍的内容只是此项目的一部分功能，并由仓库拥有者本人设计开发。
+
 ## Web API
 
 | 类型 |             URL             |                 功能介绍                  |        参数        |         返回值          |
