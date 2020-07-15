@@ -425,7 +425,7 @@ let mapOption = {
                 }
             }
         },
-        color: ['#8B008B']
+        color: ['#00CED1']
     }
 };
 
