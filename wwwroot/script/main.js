@@ -1,6 +1,4 @@
-//new Vue().$mount('#app')
-
-var Main = {
+let Main = {
     data() {
         return {
             activeIndex: '1',
@@ -9,21 +7,42 @@ var Main = {
     },
     methods: {
         handleSelect(key, keyPath) {
-            console.log(key, keyPath);
-        }
+            hideAll();
+
+            switch (key) {
+                case("1"):
+                    document.getElementById('task1').style.display = 'block';
+                    covid_visualization_init();
+                    break;
+                case("2"):
+                    document.getElementById('task2').style.display = 'block';
+                    break;
+                case("3"):
+                    document.getElementById('task3').style.display = 'block';
+                    poa_init();
+                    break;
+                default:
+                    document.getElementById('task1').style.display = 'block';
+                    covid_visualization_init();
+                    break;
+            }
+        },
+    }
+};
+var Ctor = Vue.extend(Main);
+new Ctor().$mount('#app');
+
+function hideAll() {
+    for (let i = 1; i <= 3; i++) {
+        let task = document.getElementById('task' + i);
+        task.style.display = 'none';
     }
 }
-var Ctor = Vue.extend(Main)
-new Ctor().$mount('#app')
 
-//var Main = {
-//    data() {
-//        return {
-//            fit: 'contain',
-//            url: 'img/WHU.png'
-//        }
-//    }
-//}
-//var Ctor = Vue.extend(Main)
-//new Ctor().$mount('#app')
+function init_index() {
+    hideAll();
+    document.getElementById('task1').style.display = 'block';
+    covid_visualization_init();
+}
 
+init_index();

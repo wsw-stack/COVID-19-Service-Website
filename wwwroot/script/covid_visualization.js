@@ -326,9 +326,8 @@ let mapOption = {
                 type: 'map',
                 roam: true,
                 mapType: 'china',
-                aspectScale:0.9,
+                aspectScale:0.75,
                 showLegendSymbol: false,
-                layoutSize:1000,
                 itemStyle: {
                     normal: {
                         borderWidth: .5, //区域边框宽度
@@ -417,7 +416,7 @@ let mapOption = {
         },
         legend: {
             data: ['累计确诊', '累计死亡', '累计治愈', '现存确诊'],
-            left: '5%',
+            left: '0%',
             orient: 'vertical',
             selectedMode: 'single',
             emphasis: {
@@ -589,7 +588,7 @@ let overallDailyPieOption = {
         {
             name: '全国当日疫情',
             type: 'pie',
-            radius: '50%',
+            radius: '55%',
             data: overallDaily,
             label: {
                 show: true
@@ -605,7 +604,7 @@ let liquidOption = {
     series: [{
         type: 'liquidFill',
         name: '武汉累计确诊比例',
-        radius: '60%', // 水球图的半径
+        radius: '55%', // 水球图的半径
         center: ['50%', '50%'], // 水球图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标
         shape: 'circle',
         outline: {
@@ -662,5 +661,7 @@ lineChart.on('updateAxisPointer', function (event) {
     }
 });
 
-getDataOverall(step);
-getCertainDay(key, 0);
+function covid_visualization_init() {
+    getDataOverall(step);
+    getCertainDay(key, 0);
+}

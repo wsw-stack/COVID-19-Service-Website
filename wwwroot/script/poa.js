@@ -44,11 +44,11 @@ let option_official_rank = {
     title: [
         {
             text: "疫情防控平台 TF-IDF Ranking",
-            subtext:'January 26 - July 10',
+            subtext: 'January 26 - July 10',
         }
     ],
-    grid:{
-        left:'12%'
+    grid: {
+        left: '12%'
     },
     tooltip: {
         trigger: 'item',
@@ -57,7 +57,7 @@ let option_official_rank = {
         }
     },
     xAxis: {
-        name:'TF-IDF',
+        name: 'TF-IDF',
         type: 'value',
         min: 0,
         max: 0.35,
@@ -96,11 +96,11 @@ let option_weibo_rank = {
     title: [
         {
             text: "新浪微博 TF-IDF Ranking",
-            left:'right'
+            left: 'right'
         }
     ],
-    grid:{
-      right:'12%'
+    grid: {
+        right: '12%'
     },
     tooltip: {
         trigger: 'item',
@@ -109,7 +109,7 @@ let option_weibo_rank = {
         }
     },
     xAxis: {
-        name:'TF-IDF',
+        name: 'TF-IDF',
         type: 'value',
         inverse: true,
         min: 0,
@@ -145,29 +145,31 @@ let option_weibo_rank = {
 };
 
 // 事件
-official_rank.on('dataZoom',function (params) {
-    let weibo_start=option_weibo_rank.dataZoom[0].start;
-    let weibo_end=option_weibo_rank.dataZoom[0].end;
+official_rank.on('dataZoom', function (params) {
+    let weibo_start = option_weibo_rank.dataZoom[0].start;
+    let weibo_end = option_weibo_rank.dataZoom[0].end;
 
-    if(!(weibo_start===params.start&&weibo_end===params.end)){
-        option_weibo_rank.dataZoom[0].start=params.start;
-        option_weibo_rank.dataZoom[0].end=params.end;
+    if (!(weibo_start === params.start && weibo_end === params.end)) {
+        option_weibo_rank.dataZoom[0].start = params.start;
+        option_weibo_rank.dataZoom[0].end = params.end;
 
         weibo_rank.setOption(option_weibo_rank)
     }
 });
 
-weibo_rank.on('dataZoom',function (params) {
-    let official_start=option_official_rank.dataZoom[0].start;
-    let official_end=option_official_rank.dataZoom[0].end;
+weibo_rank.on('dataZoom', function (params) {
+    let official_start = option_official_rank.dataZoom[0].start;
+    let official_end = option_official_rank.dataZoom[0].end;
 
-    if(!(official_start===params.start&&official_end===params.end)){
-        option_official_rank.dataZoom[0].start=params.start;
-        option_official_rank.dataZoom[0].end=params.end;
+    if (!(official_start === params.start && official_end === params.end)) {
+        option_official_rank.dataZoom[0].start = params.start;
+        option_official_rank.dataZoom[0].end = params.end;
 
         official_rank.setOption(option_official_rank)
     }
 });
 
-getOfficialData();
-getWeiboData();
+function poa_init() {
+    getOfficialData();
+    getWeiboData();
+}

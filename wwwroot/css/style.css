@@ -3,96 +3,64 @@
     padding: 0;
 }
 
-
-
-/*a {*/
-/*    text-decoration: none;*/
-/*}*/
-
-/*body {*/
-/*    fontsize: 24px;*/
-/*!*    background:*!*/
-/*}*/
-
-/*.container {*/
-/*    width: 100%;*/
-/*    margin: 0 auto;*/
-/*}*/
-
-/*.header{*/
-/*    background-color: #f69b5d;*/
-/*}*/
-
-/*.mainnav ul{*/
-/*    font-size: 24px;*/
-/*    margin-left: 12%;*/
-/*}*/
-
-/*.mainnav ul li{*/
-/*    display: inline-block;*/
-/*    margin-left: 12%;*/
-/*    margin-right: 12%;*/
-/*    font-family: "Songti SC";*/
-/*}*/
-
-/*.mainnav ul li a{*/
-/*    color: #ffffff;*/
-/*    line-height: 2.5em;*/
-
-/*}*/
-.Charts1{
-    height: 2000px;
-}
-
-#map_task1 {
-    height: 600px;
-    width: 800px;
-    background: white;
-    margin: 20px;
-    float: left;
+.mains {
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 .Charts1-right {
     overflow: hidden;
-    width: 500px;
+    width: 650px;
     float: right;
-    margin-right: 20px;
+    margin: 30px 0 0 0;
 }
 
-
-#lineChart_task1 {
-    height: 600px;
-    width: 600px;
-    margin: 20px 0;
-}
-
-#barChart_task1 {
-    height: 600px;
-    width: 600px;
-    margin: 20px 0;
+.Charts1-left {
+    width: 1050px;
+    overflow: hidden;
+    float: left;
+    margin: 30px 10px 0 0;
 }
 
 .Charts1-foot {
-    width: 800px;
-    overflow: hidden;
-    margin-left: 20px;
+    height: 600px;
+    margin: 0 0 50px 50px;
+}
+
+.top {
+    height: 600px;
+    margin: 0 0 80px 0;
+}
+
+#map_task1 {
+    width: 1050px;
+    background: white;
+    float: left;
+}
+
+#lineChart_task1 {
+    height: 600px;
 }
 
 #pieChart_task1 {
-    height: 550px;
-    width: 450px;
+    height: 580px;
+    width: 580px;
     float: left;
+    margin-left: 60px;
+    margin-right: 10px;
 }
 
 #overallPieChart_task1 {
-    height: 300px;
-    width: 350px;
-    float: left;
+    height: 280px;
 }
 
 #liquidChart_task1 {
-    height: 300px;
+    height: 280px;
+    margin-top: 20px;
+}
+
+.pies{
     width: 350px;
     float: left;
-    margin: 10px 50px 0 10px;
 }
