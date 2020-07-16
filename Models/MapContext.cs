@@ -15,5 +15,6 @@ namespace WebApi.Models
 
         public DbSet<Province> Provinces { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Rumor> Rumors { get; set; }
     }
 }

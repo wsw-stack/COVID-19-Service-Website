@@ -326,7 +326,7 @@ let mapOption = {
                 type: 'map',
                 roam: true,
                 mapType: 'china',
-                // aspectScale:0.9,
+                aspectScale:0.9,
                 showLegendSymbol: false,
                 layoutSize:1000,
                 itemStyle: {
