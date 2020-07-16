@@ -10,6 +10,7 @@
 
     <!-- 引入css样式文件 -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/poa.css">
 
     <!-- 引入Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -23,15 +24,31 @@
     <script src="resources/static/js/echarts-liquidfill.min.js"></script>
 </head>
 <body>
-<div id="map_task1"></div>              <!-- map -->
-<div id="lineChart_task1"></div>        <!-- 疫情趋势图 -->
-<div id="barChart_task1"></div>         <!-- 疫情排名Top10图 -->
-<div id="pieChart_task1"></div>            <!-- 除湖北外各省疫情极坐标图 -->
-<div id="overallPieChart_task1"></div>     <!-- 全国疫情比例饼图 -->
-<div id="liquidChart_task1"></div>      <!-- 水滴图 -->
+<!--第一部分-->
+<div style="overflow: hidden">
+    <div id="map_task1"></div>              <!-- map -->
+    <div id="lineChart_task1"></div>        <!-- 疫情趋势图 -->
+    <div id="barChart_task1"></div>         <!-- 疫情排名Top10图 -->
+    <div id="pieChart_task1"></div>            <!-- 除湖北外各省疫情极坐标图 -->
+    <div id="overallPieChart_task1"></div>     <!-- 全国疫情比例饼图 -->
+    <div id="liquidChart_task1"></div>      <!-- 水滴图 -->
+</div>
+
+<br>
+
+<div style="margin-bottom: 20px">
+    <h1>以下是第三部分</h1><hr>
+</div>
+
+<!--第三部分-->
+<div style="overflow: hidden">
+    <div id="official_rank" style="float: left"></div>
+    <div id="weibo_rank" style="float: right"></div>
+</div>
 
 <script src="script/tools/date.js"></script>
 <script src="script/tools/tools.js"></script>
-<script src="script/map/province_visualization.js"></script>
+<script src="script/covid_visualization.js"></script>
+<script src="script/poa.js"></script>
 </body>
 </html>

@@ -145,7 +145,6 @@ let getMapAndPieData = function (key, dateIndex) {
                     currentConfirmedPie.push(currentValue);
                 } else {
                     confirmedRatio_Hubei.push(province.confirmedCount / 59270000);
-                    console.log(confirmedRatio_Hubei);
                 }
             });
 

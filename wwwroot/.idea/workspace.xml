@@ -21,7 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3b87a692-7546-4e6f-b66c-87fab43e1d21" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/map/province_visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/map/province_visualization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/covid_visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/covid_visualization.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +32,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -54,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/static/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -65,27 +66,28 @@
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\map" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\tools" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
-      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\public" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\data" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\img" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static\js" />
       <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script" />
-      <recent name="$PROJECT_DIR$/img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\public" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\tools" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\script\map" />
+      <recent name="C:\Users\zhongyuan\Desktop\COVID-19-Service-Website\wwwroot\resources\static" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="province_visualization.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/script/map/province_visualization.js" working-dir="$PROJECT_DIR$/script/map">
+    <configuration name="covid_visualization.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/script/covid_visualization.js" working-dir="$PROJECT_DIR$/script/map">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.province_visualization.js" />
+        <item itemvalue="Node.js.covid_visualization.js" />
       </list>
     </recent_temporary>
   </component>
@@ -105,7 +107,8 @@
       <workItem from="1594466556521" duration="5630000" />
       <workItem from="1594516389923" duration="3882000" />
       <workItem from="1594521059998" duration="19212000" />
-      <workItem from="1594610788911" duration="28359000" />
+      <workItem from="1594610788911" duration="29053000" />
+      <workItem from="1594861530184" duration="10768000" />
     </task>
     <servers />
   </component>
@@ -146,9 +149,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="936" y="330" key="run.anything.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594524909150" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1594685813901">
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1594868506119">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594685813901" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594868506119" />
   </component>
 </project>
