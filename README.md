@@ -30,5 +30,5 @@
 - 数据来源：[DXY-COVID-19-Data](https://github.com/BlankerL/DXY-COVID-19-Data)
 - [Apache ECharts官方文档](https://echarts.apache.org/zh/index.html)
 - [axios API中文文档](http://www.axios-js.com/)
-- [Web API说明](Web API Instruction.md)
+- [Web API说明]([https://github.com/ashyseer/COVID-19-Service-Website/blob/master/Web%20API%20Instruction.md](https://github.com/ashyseer/COVID-19-Service-Website/blob/master/Web API Instruction.md))
 
