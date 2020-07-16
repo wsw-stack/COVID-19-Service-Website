@@ -44,6 +44,7 @@ let option_official_rank = {
     title: [
         {
             text: "疫情防控平台 TF-IDF Ranking",
+            subtext:'January 26 - July 10',
         }
     ],
     grid:{
@@ -56,6 +57,7 @@ let option_official_rank = {
         }
     },
     xAxis: {
+        name:'TF-IDF',
         type: 'value',
         min: 0,
         max: 0.35,
@@ -94,7 +96,7 @@ let option_weibo_rank = {
     title: [
         {
             text: "新浪微博 TF-IDF Ranking",
-            right: '0'
+            left:'right'
         }
     ],
     grid:{
@@ -107,6 +109,7 @@ let option_weibo_rank = {
         }
     },
     xAxis: {
+        name:'TF-IDF',
         type: 'value',
         inverse: true,
         min: 0,
