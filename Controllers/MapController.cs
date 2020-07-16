@@ -265,48 +265,122 @@ namespace WebApi.Controllers
             }
         }
 
-        private City QueryCityCertainDay(string cityName, string date)
+        /// <summary>
+        /// 按关键词搜索谣言
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
+        /// <route>Get: api/map/rumor/bytitle?title=新冠&&skip=5&&take=10</route>
+        [HttpGet("rumor/bytitle")]
+        public ActionResult<List<Rumor>> GetRumorsByTitle(string title,int skip,int take)
         {
-            using(MySqlConnection connection=GetConnection())
+            var query = mapDb.Rumors.Where(s => s.Title.Contains(title)).Skip(skip).Take(take);
+            if (query == null) 
             {
-                string sql = $"SELECT * FROM cities WHERE CityName='{cityName}' AND Date='{date}'";
-                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                {
-                    using(MySqlDataReader reader=cmd.ExecuteReader())
-                    {
-                        if (reader.Read()) 
-                        {
-                            City result = new City()
-                            {
-                                Id = reader.GetInt32(0),
-                                CityName = reader.GetString(1),
-                                CityEnglishName = reader.GetString(2),
-                                CurrentConfirmedCount = reader.GetInt32(3),
-                                ConfirmedCount = reader.GetInt32(4),
-                                CuredCount = reader.GetInt32(5),
-                                DeadCount = reader.GetInt32(6),
-                                ProvinceId = reader.GetInt32(7),
-                                Date = reader.GetString(8)
-                            };
-
-                            return result;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                }
+                return NotFound();
+            }
+            else
+            {
+                return query.ToList();
             }
         }
 
-        private static MySqlConnection GetConnection()
+        /// <summary>
+        /// 分页查询所有谣言
+        /// </summary>
+        /// <param name="skip"></param>
+        /// <param name="take"></param>
+        /// <route>Get: api/map/rumor/all?skip=5&&take=10</route>
+        [HttpGet("rumor/all")]
+        public ActionResult<List<Rumor>> GetAllRumors(int skip,int take)
         {
-            MySqlConnection connection = new MySqlConnection(
-                "datasource=localhost;username=root;" +
-                "password=312725802;database=mapDB;charset=utf8");
-            connection.Open();
-            return connection;
+            var query = mapDb.Rumors.Skip(skip).Take(take);
+            if (query == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return query.ToList();
+            }
+        }
+
+        /// <summary>
+        /// 向数据库中添加谣言
+        /// </summary>
+        /// <param name="rumor"></param>
+        /// <returns></returns>
+        /// <route>Post: api/map/rumor</route>
+        [HttpPost("rumor")]
+        public ActionResult<Rumor> PostRumor(Rumor rumor)
+        {
+            try
+            {
+                var query = mapDb.Rumors.FirstOrDefault(s => s.Title == rumor.Title);
+                if (query != null)
+                {
+                    return BadRequest();
+                }
+
+                mapDb.Rumors.Add(rumor);
+                mapDb.SaveChanges();
+
+                return rumor;
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 修改谣言
+        /// </summary>
+        /// <param name="rumorId"></param>
+        /// <param name="rumor"></param>
+        /// <returns></returns>
+        /// <route>Put: api/map/rumor/title</route>
+        [HttpPut("rumor/{title}")]
+        public ActionResult<Rumor> PutRumor(string title,Rumor rumor)
+        {
+            if (title != rumor.Title) 
+            {
+                return BadRequest("It cannot be modified!");
+            }
+
+            try
+            {
+                mapDb.Entry(rumor).State = EntityState.Modified;
+                mapDb.SaveChanges();
+
+                return rumor;
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("rumor/delete/{title}")]
+        public ActionResult DeleteRumor(string title)
+        {
+            try
+            {
+                var query = mapDb.Rumors.FirstOrDefault(s => s.Title == title);
+                if (query != null) 
+                {
+                    mapDb.Remove(query);
+                    mapDb.SaveChanges();
+
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
