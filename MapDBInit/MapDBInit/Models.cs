@@ -54,4 +54,21 @@ namespace MapDBInit
             return this.MemberwiseClone();
         }
     }
+
+    public class Rumor : ICloneable
+    {
+        [Key]
+        public long RumorId { get; set; }
+        public string Title { get; set; }
+        public string MainSummary { get; set; }
+        public int RumorType { get; set; }
+        public string Body { get; set; }
+        public long CrawlTime { get; set; }
+        public string Date { get; set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
 }

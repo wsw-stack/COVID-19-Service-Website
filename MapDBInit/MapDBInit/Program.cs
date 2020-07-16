@@ -113,6 +113,31 @@ namespace MapDBInit
 
                 context.Provinces.AddRange(cleanData);
 
+                jsonFile = @"..\..\..\..\Data\DXYRumors-TimeSeries.json";
+
+                fin = new FileStream(jsonFile, FileMode.Open, FileAccess.Read);
+                reader = new StreamReader(fin, Encoding.UTF8);
+                jsonData = reader.ReadToEnd();
+
+                List<Rumor> rumors = JsonConvert.DeserializeObject<List<Rumor>>(jsonData);
+
+                foreach (var rumor in rumors)
+                {
+                    rumor.Date = TicksToDate(rumor.CrawlTime).ToString("d");
+                }
+
+                var cleanRumors = new List<Rumor>();
+
+                var rumorGroups = rumors.GroupBy(s => s.Date);
+                foreach (var rumorGroup in rumorGroups)
+                {
+                    // 一个groupByDate表示一天的数据
+                    var order = rumorGroup.OrderByDescending(s => s.CrawlTime);   // 降序排列
+                    cleanRumors.Add(order.First());   // 取一天中最后更新的
+                }
+
+                context.Rumors.AddRange(cleanRumors);
+
                 context.SaveChanges();
             }
         }
