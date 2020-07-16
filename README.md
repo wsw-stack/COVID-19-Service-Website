@@ -16,8 +16,8 @@
 
 1. 克隆该项目至本地；
 2. 新建 MySQL 连接，并新建数据库 mapdb；
-3. 将项目 Data 目录下的 mapdb.sql 文件导入至 mapdb 数据库；![image-20200716150018480](\Images\README\1.png)
-4. 修改 appsetting.json 中的数据库连接字符串，填入新建连接时设置的用户名和密码；![image-20200716150552063](\Images\README\2.png)
+3. 将项目 Data 目录下的 mapdb.sql 文件导入至 mapdb 数据库；![image-20200716150018480](Images\README\1.png)
+4. 修改 appsetting.json 中的数据库连接字符串，填入新建连接时设置的用户名和密码；![image-20200716150552063](Images\README\2.png)
 5. 在 VSCode 中运行项目，自动跳转至主页。
 
 ## 说明
@@ -30,5 +30,5 @@
 - 数据来源：[DXY-COVID-19-Data](https://github.com/BlankerL/DXY-COVID-19-Data)
 - [Apache ECharts官方文档](https://echarts.apache.org/zh/index.html)
 - [axios API中文文档](http://www.axios-js.com/)
-- [Web API说明](\Web API Instruction.md)
+- [Web API说明](Web API Instruction.md)
 
