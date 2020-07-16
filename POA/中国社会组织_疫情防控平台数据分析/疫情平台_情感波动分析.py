@@ -18,10 +18,10 @@ from pyecharts import options as opts
 from pyecharts.charts import Bar
 #获取情感分数
 
-data = pd.read_csv('weibo_data.csv')
+data = pd.read_csv('中国社会组织_疫情防控1_1-2_20.csv')
 cut_words=[]
-data_test=data.iloc[:300]
-for line in data_test['微博中文内容']:
+data_test=data.iloc[:200]
+for line in data_test['正文内容']:
     line = str(line)
     seg_list = jieba.cut(line,cut_all=False)
     cut_word= (" ".join(seg_list))
@@ -78,9 +78,9 @@ c.set_series_opts(label_opts=opts.LabelOpts(is_show=False),
              #                 ]
              # )
 )
-c.set_global_opts(title_opts=opts.TitleOpts(title="微博数据_情感波动图"),xaxis_opts=opts.AxisOpts(name='序号')
+c.set_global_opts(title_opts=opts.TitleOpts(title="中国社会组织疫情防控平台数据_情感波动图"),xaxis_opts=opts.AxisOpts(name='序号')
                   # datazoom_opts水平显示，vertical垂直显示
                   # datazoom_opts=opts.DataZoomOpts(orient="vertical")
                   )
 #c.render_notebook()
-c.render('微博数据情感波动分析.html')
+c.render('中国社会组织疫情防控平台数据_情感波动分析.html')
