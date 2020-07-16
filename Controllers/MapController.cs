@@ -361,6 +361,12 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// 删除谣言
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
+        /// <route>Delete: api/map/rumor/title</route>
         [HttpDelete("rumor/delete/{title}")]
         public ActionResult DeleteRumor(string title)
         {
