@@ -38,27 +38,33 @@
 <!--                <li><a href="#">任务3</a></li>-->
 <!--            </ul>-->
 <!--        </nav>-->
-        <div id="app">
-            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                <el-menu-item index="1" style="margin-left: 10% ; font-size: 18px ">任务1</el-menu-item>
-                <el-menu-item index="2">任务2</el-menu-item>
-                <el-menu-item index="3">任务3</el-menu-item>
-            </el-menu>
-        </div>
+            <div id="app">
+                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                    <el-menu-item index="1" style="margin-left: 30% ; font-size: 18px">任务1</el-menu-item>
+                    <el-menu-item index="2" style="margin-left: 10% ; font-size: 18px ">任务2</el-menu-item>
+                    <el-menu-item index="3" style="margin-left: 10% ; font-size: 18px ">任务3</el-menu-item>
+                </el-menu>
+            </div>
         </div>
     <!--第一部分-->
+<!--        主体部分-->
+        <div class="Main">
+            <div style="overflow: hidden" class="Charts1">
+                <div id="map_task1" class="Charts1-Middle"></div>
+                       <!-- map -->
+                <div class="Charts1-right">
+                    <div id="lineChart_task1"></div>        <!-- 疫情趋势图 -->
+                    <div id="barChart_task1"></div>         <!-- 疫情排名Top10图 -->
+                </div>
+                <div class="Charts1-foot">
+                    <div id="pieChart_task1"></div>
+                    <!-- 除湖北外各省疫情极坐标图 -->
+                    <div id="overallPieChart_task1"></div>     <!-- 全国疫情比例饼图 -->
+                    <div id="liquidChart_task1"></div>      <!-- 水滴图 -->
+                </div>
+            </div>
+        </div>
 
-
-
-
-    <div style="overflow: hidden">
-        <div id="map_task1"></div>              <!-- map -->
-        <div id="lineChart_task1"></div>        <!-- 疫情趋势图 -->
-        <div id="barChart_task1"></div>         <!-- 疫情排名Top10图 -->
-        <div id="pieChart_task1"></div>            <!-- 除湖北外各省疫情极坐标图 -->
-        <div id="overallPieChart_task1"></div>     <!-- 全国疫情比例饼图 -->
-        <div id="liquidChart_task1"></div>      <!-- 水滴图 -->
-    </div>
 
     <br>
 
