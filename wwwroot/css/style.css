@@ -1,16 +1,47 @@
-.el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 800px;
+el-menu-item {
+    width: 20%;
 }
+
+/*a {*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*body {*/
+/*    fontsize: 24px;*/
+/*!*    background:*!*/
+/*}*/
+
+/*.container {*/
+/*    width: 100%;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*.header{*/
+/*    background-color: #f69b5d;*/
+/*}*/
+
+/*.mainnav ul{*/
+/*    font-size: 24px;*/
+/*    margin-left: 12%;*/
+/*}*/
+
+/*.mainnav ul li{*/
+/*    display: inline-block;*/
+/*    margin-left: 12%;*/
+/*    margin-right: 12%;*/
+/*    font-family: "Songti SC";*/
+/*}*/
+
+/*.mainnav ul li a{*/
+/*    color: #ffffff;*/
+/*    line-height: 2.5em;*/
+
+/*}*/
 
 #map_task1 {
     height: 800px;
