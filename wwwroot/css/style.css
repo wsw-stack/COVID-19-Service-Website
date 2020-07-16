@@ -1,58 +1,98 @@
-.el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 800px;
+
+
+/*a {*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*body {*/
+/*    fontsize: 24px;*/
+/*!*    background:*!*/
+/*}*/
+
+/*.container {*/
+/*    width: 100%;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*.header{*/
+/*    background-color: #f69b5d;*/
+/*}*/
+
+/*.mainnav ul{*/
+/*    font-size: 24px;*/
+/*    margin-left: 12%;*/
+/*}*/
+
+/*.mainnav ul li{*/
+/*    display: inline-block;*/
+/*    margin-left: 12%;*/
+/*    margin-right: 12%;*/
+/*    font-family: "Songti SC";*/
+/*}*/
+
+/*.mainnav ul li a{*/
+/*    color: #ffffff;*/
+/*    line-height: 2.5em;*/
+
+/*}*/
+.Charts1{
+    height: 2000px;
 }
 
 #map_task1 {
-    height: 800px;
-    width: 1200px;
+    height: 600px;
+    width: 800px;
     background: white;
-    margin: 20px 0 0;
+    margin: 20px;
     float: left;
-    overflow: hidden;
 }
+
+.Charts1-right {
+    overflow: hidden;
+    width: 500px;
+    float: right;
+    margin-right: 20px;
+}
+
 
 #lineChart_task1 {
     height: 600px;
     width: 600px;
-    margin: 20px 40px;
-    float: right;
-    overflow: hidden;
+    margin: 20px 0;
 }
 
 #barChart_task1 {
     height: 600px;
     width: 600px;
-    margin: 20px 40px;
-    float: right;
+    margin: 20px 0;
+}
+
+.Charts1-foot {
+    width: 800px;
+    overflow: hidden;
+    margin-left: 20px;
 }
 
 #pieChart_task1 {
-    height: 500px;
-    width: 500px;
+    height: 550px;
+    width: 450px;
     float: left;
-    margin: 50px 50px 50px;
 }
 
 #overallPieChart_task1 {
     height: 300px;
-    width: 300px;
+    width: 350px;
     float: left;
-    margin:50px 50px 0 0;
 }
 
 #liquidChart_task1 {
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 350px;
     float: left;
     margin: 10px 50px 0 10px;
 }

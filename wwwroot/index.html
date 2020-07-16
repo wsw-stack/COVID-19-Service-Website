@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>COVIDView: A Pandemic Review</title>
-    <meta name="keywords" content="covid-19,新冠疫情,疫情全国数据,疫情模拟,C-SEIR模型,新浪微博数据,GIS,舆情分析"/>
-    <meta name="description" content="新型冠状病毒(covid-19)全国统计数据，结合GIS空间分析与C-SEIR模型，对疫情扩散进行模拟，以及根据新浪微博数据对疫情期间舆情进行分析。"/>
+    <meta name="keywords" content="covid-19,新冠疫情,疫情全国数据,疫情模拟,C-SEIR模型,新浪微博数据,GIS,舆情分析" />
+    <meta name="description" content="新型冠状病毒(covid-19)全国统计数据，结合GIS空间分析与C-SEIR模型，对疫情扩散进行模拟，以及根据新浪微博数据对疫情期间舆情进行分析。" />
     <!-- 浏览器图标 -->
     <link rel="icon" href="resources/static/img/virus.png">
 
     <!-- 引入css样式文件 -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/poa.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 
     <!-- 引入Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -18,37 +19,71 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- 引入Echarts-->
     <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <!-- 地图 -->
     <script src="resources/static/js/china.js"></script>
     <!-- 引入水滴图 -->
     <script src="resources/static/js/echarts-liquidfill.min.js"></script>
 </head>
 <body>
-<!--第一部分-->
-<div style="overflow: hidden">
-    <div id="map_task1"></div>              <!-- map -->
-    <div id="lineChart_task1"></div>        <!-- 疫情趋势图 -->
-    <div id="barChart_task1"></div>         <!-- 疫情排名Top10图 -->
-    <div id="pieChart_task1"></div>            <!-- 除湖北外各省疫情极坐标图 -->
-    <div id="overallPieChart_task1"></div>     <!-- 全国疫情比例饼图 -->
-    <div id="liquidChart_task1"></div>      <!-- 水滴图 -->
+    <div class="container">
+    <!--    头部-->
+        <div class="header">
+        <!--导航-->
+<!--        <nav class="mainnav">-->
+<!--            <ul>-->
+<!--                <li><a href="#">任务1</a></li>-->
+<!--                <li><a href="#">任务2</a></li>-->
+<!--                <li><a href="#">任务3</a></li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+            <div id="app">
+                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                    <el-menu-item index="1" style="margin-left: 30% ; font-size: 18px">任务1</el-menu-item>
+                    <el-menu-item index="2" style="margin-left: 10% ; font-size: 18px ">任务2</el-menu-item>
+                    <el-menu-item index="3" style="margin-left: 10% ; font-size: 18px ">任务3</el-menu-item>
+                </el-menu>
+            </div>
+        </div>
+    <!--第一部分-->
+<!--        主体部分-->
+        <div class="Main">
+            <div style="overflow: hidden" class="Charts1">
+                <div id="map_task1" class="Charts1-Middle"></div>
+                       <!-- map -->
+                <div class="Charts1-right">
+                    <div id="lineChart_task1"></div>        <!-- 疫情趋势图 -->
+                    <div id="barChart_task1"></div>         <!-- 疫情排名Top10图 -->
+                </div>
+                <div class="Charts1-foot">
+                    <div id="pieChart_task1"></div>
+                    <!-- 除湖北外各省疫情极坐标图 -->
+                    <div id="overallPieChart_task1"></div>     <!-- 全国疫情比例饼图 -->
+                    <div id="liquidChart_task1"></div>      <!-- 水滴图 -->
+                </div>
+            </div>
+        </div>
+
+
+    <br>
+
+    <div style="margin-bottom: 20px">
+        <h1>以下是第三部分</h1>
+        <hr>
+    </div>
+
+    <!--第三部分-->
+    <div style="overflow: hidden">
+        <div id="official_rank" style="float: left"></div>
+        <div id="weibo_rank" style="float: right"></div>
+    </div>
 </div>
 
-<br>
-
-<div style="margin-bottom: 20px">
-    <h1>以下是第三部分</h1><hr>
-</div>
-
-<!--第三部分-->
-<div style="overflow: hidden">
-    <div id="official_rank" style="float: left"></div>
-    <div id="weibo_rank" style="float: right"></div>
-</div>
-
-<script src="script/tools/date.js"></script>
-<script src="script/tools/tools.js"></script>
-<script src="script/covid_visualization.js"></script>
-<script src="script/poa.js"></script>
+    <script src="script/tools/date.js"></script>
+    <script src="script/tools/tools.js"></script>
+    <script src="script/covid_visualization.js"></script>
+    <script src="script/poa.js"></script>
+    <script src="script/main.js"></script>
 </body>
 </html>
