@@ -326,7 +326,9 @@ let mapOption = {
                 type: 'map',
                 roam: true,
                 mapType: 'china',
+                // aspectScale:0.9,
                 showLegendSymbol: false,
+                layoutSize:1000,
                 itemStyle: {
                     normal: {
                         borderWidth: .5, //区域边框宽度
