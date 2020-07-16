@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b87a692-7546-4e6f-b66c-87fab43e1d21" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/covid_visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/covid_visualization.js" afterDir="false" />
-    </list>
+    <list default="true" id="3b87a692-7546-4e6f-b66c-87fab43e1d21" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +104,7 @@
       <workItem from="1594516389923" duration="3882000" />
       <workItem from="1594521059998" duration="19212000" />
       <workItem from="1594610788911" duration="29053000" />
-      <workItem from="1594861530184" duration="10768000" />
+      <workItem from="1594861530184" duration="11555000" />
     </task>
     <servers />
   </component>
