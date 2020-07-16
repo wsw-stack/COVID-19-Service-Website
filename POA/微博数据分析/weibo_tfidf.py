@@ -14,9 +14,9 @@ from pyecharts import options as opts
 from pyecharts.charts import Bar
 #------------------------------------中文分词------------------------------------
 cut_words = ""
-data = pd.read_csv('weiboComments.csv')
+data = pd.read_csv('weibo_data.csv')
 
-for line in data['评论内容']:
+for line in data['微博中文内容']:
     line = str(line)
     seg_list = jieba.cut(line,cut_all=False)
     cut_words += (" ".join(seg_list))
@@ -39,7 +39,7 @@ pd.DataFrame(keywords, columns=['词语','重要性']).to_excel('TF_IDF关键词
 
 # keyword本身包含两列数据
 ss = pd.DataFrame(keywords,columns = ['词语','重要性'])
-# print(ss)
+#print(ss)
 
 #------------------------------------数据可视化------------------------------------
 # plt.figure(figsize=(10,6))
@@ -78,7 +78,7 @@ c.set_series_opts(label_opts=opts.LabelOpts(is_show=False),
              #                 ]
              # )
 )
-c.set_global_opts(title_opts=opts.TitleOpts(title="微博数据_TF-IDF _Ranking"),
+c.set_global_opts(title_opts=opts.TitleOpts(title="微博数据_TF-IDF _Ranking"),xaxis_opts=opts.AxisOpts(name='词语')
                   # datazoom_opts水平显示，vertical垂直显示
                   # datazoom_opts=opts.DataZoomOpts(orient="vertical")
                   )

@@ -1,19 +1,30 @@
 # -*- coding: utf-8 -*-
-from snownlp import SnowNLP
+
 import codecs
 import os
-import pandas as pd
 import jieba
+from snownlp import SnowNLP
+import pandas as pd
+import numpy as np
+import jieba.analyse
 
-data = pd.read_csv('weiboComments.csv',usecols=['评论内容'])
-lines=str()
-final_list = data.values.tolist()
-for line in data['评论内容']:
+data = pd.read_csv('weibo_data.csv')
+lines=""
+for line in data['keyword1']:
     line = str(line)
     lines=lines+line
 #print(final_list)
+
+keywords = jieba.analyse.extract_tags(lines,
+                                      topK=1200,
+                                      withWeight=True,
+                                     # allowPOS=('a','e','n','nr','ns', 'v')#词性 形容词 叹词 名词 动词
+)
+ss = pd.DataFrame(keywords,columns = ['词语','重要性'])
+words = np.array(ss.词语) #先将数据框转换为数组
+
 sentimentslist = []
-for i in final_list:
+for i in words:
     i=str(i)
     s = SnowNLP(i)
    # print(s.sentiments)
@@ -35,7 +46,7 @@ from pyecharts.charts import Bar
 import numpy as np
 
 
-(n,bins)=np.histogram(sentimentslist,100,range=(0,1))
+(n,bins)=np.histogram(sentimentslist,50,range=(0,1))
 
 c = Bar()
 y = n.tolist()
@@ -57,9 +68,9 @@ c.set_series_opts(label_opts=opts.LabelOpts(is_show=False),
              #                 ]
              # )
 )
-c.set_global_opts(title_opts=opts.TitleOpts(title="微博数据_Sentiments_Probability"),
+c.set_global_opts(title_opts=opts.TitleOpts(title="微博数据情感数值分布图"),xaxis_opts=opts.AxisOpts(name='情感数值')
                   # datazoom_opts水平显示，vertical垂直显示
                   # datazoom_opts=opts.DataZoomOpts(orient="vertical")
                   )
 #c.render_notebook()
-c.render('微博数据_Sentiments_Probability.html')
+c.render('微博数据情感数值分布图.html')
