@@ -15,8 +15,8 @@
 ## 使用帮助
 
 1. 克隆该项目至本地；
-2. 新建 MySQL 连接，并新建数据库 mapdb；
-3. 将项目 Data 目录下的 mapdb.sql 文件导入至 mapdb 数据库；![1](Images/README/1.png)
+2. 新建 MySQL 连接，并新建数据库 mapDB；
+3. 将项目 Data 目录下的 mapdb.sql 文件导入至 mapDB 数据库；![1](Images/README/1.png)
 4. 修改 appsetting.json 中的数据库连接字符串，填入新建连接时设置的用户名和密码；![2](Images/README/2.png)
 5. 在 VSCode 中运行项目，自动跳转至主页。
 
