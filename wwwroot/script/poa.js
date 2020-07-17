@@ -170,6 +170,11 @@ weibo_rank.on('dataZoom', function (params) {
 });
 
 function poa_init() {
+    official_rank_legend_data.splice(0, official_rank_legend_data.length);
+    official_rank_series_data.splice(0, official_rank_series_data.length);
+    weibo_rank_legend_data.splice(0, weibo_rank_legend_data.length);
+    weibo_rank_series_data.splice(0, weibo_rank_series_data.length);
+
     getOfficialData();
     getWeiboData();
 }
