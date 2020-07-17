@@ -31,8 +31,16 @@
     <!--    头部-->
     <div class="header">
         <div id="app">
-            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                <el-menu-item index="1" style="margin-left: 30% ; font-size: 15px">疫情可视化</el-menu-item>
+            <el-menu :default-active="activeIndex"
+                     class="el-menu-demo"
+                     mode="horizontal"
+                     @select="handleSelect"
+                     background-color="#545c64"
+                     text-color="#fff"
+                     active-text-color="#ffd04b">
+                <el-image :src="virus_image_src" class="imgs"></el-image>
+                <span id="title" class="title">COVIDView: A Pandemic Review</span>
+                <el-menu-item index="1" style="margin-left: 15% ; font-size: 15px">疫情可视化</el-menu-item>
                 <el-menu-item index="2" style="margin-left: 10% ; font-size: 15px ">扩散模拟</el-menu-item>
                 <el-menu-item index="3" style="margin-left: 10% ; font-size: 15px ">舆情分析</el-menu-item>
             </el-menu>

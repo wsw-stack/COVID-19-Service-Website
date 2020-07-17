@@ -2,7 +2,7 @@ let Main = {
     data() {
         return {
             activeIndex: '1',
-            activeIndex2: '2'
+            virus_image_src:'resources/static/img/virus.png',
         };
     },
     methods: {
