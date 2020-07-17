@@ -274,7 +274,7 @@ namespace WebApi.Controllers
         [HttpGet("rumor/bytitle")]
         public ActionResult<List<Rumor>> GetRumorsByTitle(string title,int skip,int take)
         {
-            var query = mapDb.Rumors.Where(s => s.Title.Contains(title)).Skip(skip).Take(take);
+            var query = mapDb.Rumors.Where(s => s.Title.Contains(title)).Skip(skip).Take(take).OrderByDescending(s => s.CrawlTime);
             if (query == null) 
             {
                 return NotFound();
@@ -294,7 +294,7 @@ namespace WebApi.Controllers
         [HttpGet("rumor/all")]
         public ActionResult<List<Rumor>> GetAllRumors(int skip,int take)
         {
-            var query = mapDb.Rumors.Skip(skip).Take(take);
+            var query = mapDb.Rumors.Skip(skip).Take(take).OrderByDescending(s => s.CrawlTime);
             if (query == null)
             {
                 return NotFound();
@@ -321,6 +321,9 @@ namespace WebApi.Controllers
                 {
                     return BadRequest();
                 }
+
+                var date = DateCalculator.StringToDate(rumor.Date);
+                rumor.CrawlTime = DateCalculator.DateToTicks(date);
 
                 mapDb.Rumors.Add(rumor);
                 mapDb.SaveChanges();
@@ -350,6 +353,9 @@ namespace WebApi.Controllers
 
             try
             {
+                var date = DateCalculator.StringToDate(rumor.Date);
+                rumor.CrawlTime = DateCalculator.DateToTicks(date);
+
                 mapDb.Entry(rumor).State = EntityState.Modified;
                 mapDb.SaveChanges();
 
