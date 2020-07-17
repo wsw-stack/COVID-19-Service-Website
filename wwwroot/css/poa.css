@@ -1,9 +1,19 @@
-#official_rank{
+.poa_left {
+    float: left;
     width: 900px;
-    height: 500px;
 }
 
-#weibo_rank{
+.poa_right {
+    float: right;
     width: 900px;
+}
+
+.TF-IDF{
     height: 500px;
+    margin: 0 0 20px 0;
+}
+
+.sen-index{
+    height: 500px;
+    margin: 0 0 20px 0;
 }
