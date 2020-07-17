@@ -281,8 +281,8 @@ let mapOption = {
         },
         title: {
             text: 'China COVID-19 Visualization, 25 January - 31 March, 2020',
-            subtext: "Provided by Zhong Y., Guo H.P., Yan H.T., He R.D. and Sheng G.M. (Outside help)",
-            sublink: 'https://github.com/ashyseer/COVID-19-Service-Website',
+            // subtext: "Provided by Zhong Y., Guo H.P., Yan H.T., He R.D. and Sheng G.M. (Outside help)",
+            // sublink: 'https://github.com/ashyseer/COVID-19-Service-Website',
             left: 'right'
         },
         tooltip: {

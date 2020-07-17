@@ -26,7 +26,7 @@
 
 .Charts1-foot {
     height: 600px;
-    margin: 0 0 50px 50px;
+    margin: 0 0 10px 50px;
 }
 
 .top {
@@ -69,7 +69,7 @@
 .imgs {
     width: 40px;
     height: 40px;
-    margin: 10px 0 10px 40px;
+    margin: 10px 0 10px 35px;
     float: left;
 }
 
@@ -79,4 +79,25 @@
     margin: 18px 0 10px 20px;
     color: #f2f2f2;
     font-family: "Times New Roman";
+}
+
+.foot {
+    width: 100%;
+    background-color: #F5F5F5;
+    height: 80px;
+    margin-top: 30px;
+}
+
+.notes{
+    margin:0 auto;
+    padding: 15px;
+    width: 50%;
+    text-align: center;
+}
+
+.ending_ps{
+    font-size: 14px;
+    font-family: "Times New Roman";
+    color: 	#696969;
+    line-height: 1.7;
 }
