@@ -15,7 +15,7 @@ from pyecharts.charts import Bar
 
 #------------------------------------中文分词------------------------------------
 cut_words = ""
-data = pd.read_csv('中国社会组织_疫情防控.csv')
+data = pd.read_csv('中国社会组织_疫情防控1_1-2_20.csv')
 
 for line in data['正文内容']:
     line = str(line)
@@ -64,6 +64,7 @@ data_y_list = data_y.tolist()  #其次转换为列表
 c = Bar()
 # x轴
 c.add_xaxis(data_x_list)
+
 # y轴
 c.add_yaxis('TF-IDF值',data_y_list)
 
@@ -79,10 +80,11 @@ c.set_series_opts(label_opts=opts.LabelOpts(is_show=False),
              #                 ]
              # )
 )
-c.set_global_opts(title_opts=opts.TitleOpts(title="疫情防控平台数据_TF-IDF _Ranking"),
+c.set_global_opts(title_opts=opts.TitleOpts(title="疫情防控平台数据_TF-IDF _Ranking"),xaxis_opts=opts.AxisOpts(name='词语')
                   # datazoom_opts水平显示，vertical垂直显示
                   # datazoom_opts=opts.DataZoomOpts(orient="vertical")
                   )
 #c.render_notebook()
+
 c.render('疫情防控平台数据_TF-IDF _Ranking.html')
 

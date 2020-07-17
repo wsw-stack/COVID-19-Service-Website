@@ -18,9 +18,9 @@ def generatewordData(percent):
     percent = percent / 10
     num = data.shape[0]/10
     data = data.iloc[int(num*percent):int(num*percent+num),]
-    print(data.shape[0])
-    print(list(data['时间'])[0])
-    print(list(data['时间'])[-1])
+    #print(data.shape[0])
+    #print(list(data['时间'])[0])
+    #print(list(data['时间'])[-1])
 
     for line in data['正文内容']:
         line = str(line)
@@ -43,7 +43,7 @@ def generatewordData(percent):
         # print(k, v)
         words.append((k,v))
     words = words[1:]
-    return words,list(data['时间'])[0],list(data['时间'])[-1]
+    return words,list(data['时间'])[-1],list(data['时间'])[0]
 
 # 渲染图
 
@@ -62,7 +62,7 @@ def render_wordcloud(percent = 0) -> WordCloud:
     c = (
         WordCloud()
         .add("", words, word_size_range=[20, 100], shape=SymbolType.ROUND_RECT)
-        .set_global_opts(title_opts=opts.TitleOpts(title='全国新型冠状病毒疫情新闻词云图'+' '+date_data[int(percent)][1]+' - '+date_data[int(percent)][2]))
+        .set_global_opts(title_opts=opts.TitleOpts(pos_left='center',title='新型冠状病毒疫情新闻词云图'+' '+date_data[int(percent)][1]+' - '+date_data[int(percent)][2]))
     )
     return c
 
@@ -70,7 +70,7 @@ def render_wordcloud(percent = 0) -> WordCloud:
 if __name__ == "__main__":
     date_words = []
     for i in range(0,91):
-        print(i)
+        #print(i)
         words,date_start,date_end = generatewordData(i)
         date_words.append([words,date_start,date_end])
     with open("wordData.py",'w',encoding='utf-8') as f:
@@ -85,7 +85,11 @@ if __name__ == "__main__":
     from wordData import date_data
     attr = Faker.choose()
     tl = Timeline()
-    for i in range(0,91):
+
+
+
+    #tl.add_schema(label_opts= opts.LabelOpts( is_show=False))
+    for i in range(0,11):
         #tl.add(render_wordcloud(i), "{}".format(i))
-        tl.add(render_wordcloud(i),'{}'.format(date_data[int(i)][1]+' - '+date_data[int(i)][2]))
-    tl.render("timeline_wordcloud.html")
+        tl.add(render_wordcloud(90-9*i),'{}'.format(date_data[90-int(i)*9][1]+' - '+date_data[90-int(i)*9][2]))
+    tl.render("中国社会组织疫情防控平台_wordcloud.html")
