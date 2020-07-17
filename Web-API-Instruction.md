@@ -14,7 +14,7 @@
 |  GET   | 谣言 |    api/map/rumor/bytitle     |             按关键词搜索谣言              | title, skip, take  | Array  |
 |  GET   | 谣言 |      api/map/rumor/all       |             分页查询所有谣言              |     skip, take     | Array  |
 |  POST  | 谣言 |        api/map/rumor         |            向数据库中添加谣言             |         无         |   无   |
-|  PUT   | 谣言 |    api/map/rumor/{title}     |                 修改谣言                  |       title        |   无   |
+|  PUT   | 谣言 |      api/map/rumor/{id}      |                 修改谣言                  |         id         |   无   |
 | DELETE | 谣言 | api/map/rumor/delete/{title} |                 删除谣言                  |       title        |   无   |
 
 ### Web API示例

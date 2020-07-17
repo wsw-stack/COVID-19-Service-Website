@@ -316,7 +316,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var query = mapDb.Rumors.FirstOrDefault(s => s.Title == rumor.Title);
+                var query = mapDb.Rumors.FirstOrDefault(s => s.Title == rumor.Title || s.RumorId == rumor.RumorId);
                 if (query != null)
                 {
                     return BadRequest();
@@ -343,19 +343,16 @@ namespace WebApi.Controllers
         /// <param name="rumor"></param>
         /// <returns></returns>
         /// <route>Put: api/map/rumor/title</route>
-        [HttpPut("rumor/{title}")]
-        public ActionResult<Rumor> PutRumor(string title,Rumor rumor)
+        [HttpPut("rumor/{id}")]
+        public ActionResult<Rumor> PutRumor(long id,Rumor rumor)
         {
-            if (title != rumor.Title) 
+            if (id != rumor.RumorId) 
             {
                 return BadRequest("It cannot be modified!");
             }
 
             try
             {
-                var date = DateCalculator.StringToDate(rumor.Date);
-                rumor.CrawlTime = DateCalculator.DateToTicks(date);
-
                 mapDb.Entry(rumor).State = EntityState.Modified;
                 mapDb.SaveChanges();
 
