@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b87a692-7546-4e6f-b66c-87fab43e1d21" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../POA/中国社会组织_疫情防控平台数据分析/结果/1_26-2_20疫情防控平台情感数值分布图.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../POA/微博数据分析/结果/1_01-2_20微博数据情感数值分布图.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/poa.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/poa.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/covid_visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/covid_visualization.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/poa.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/poa.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

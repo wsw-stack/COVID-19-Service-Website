@@ -12,14 +12,16 @@ let official_rank_legend_data = [];
 let official_rank_series_data = [];
 let official_senIndex_series_data = [];
 let official_senIndex_legend_data = [];
-let official_senWave_series_data = [];
+let official_senWave_series_positive_data = [];
+let official_senWave_series_negative_data = [];
 let official_senWave_legend_data = [];
 // 微博数据
 let weibo_rank_legend_data = [];
 let weibo_rank_series_data = [];
 let weibo_senIndex_series_data = [];
 let weibo_senIndex_legend_data = [];
-let weibo_senWave_series_data = [];
+let weibo_senWave_series_positive_data = [];
+let weibo_senWave_series_negative_data = [];
 let weibo_senWave_legend_data = [];
 
 
@@ -60,7 +62,14 @@ let getOfficialData = function () {
 
             for (let i = 0; i < data.series_data.length; i++) {
                 official_senWave_legend_data.push(data.legend_data[i]);
-                official_senWave_series_data.push(data.series_data[i]);
+                if (data.series_data[i] >= 0) {
+                    official_senWave_series_positive_data.push(data.series_data[i]);
+                    official_senWave_series_negative_data.push(0);
+                } else {
+                    official_senWave_series_positive_data.push(0);
+                    official_senWave_series_negative_data.push(data.series_data[i]);
+                }
+
             }
 
             official_senWave.setOption(option_official_senWave);
@@ -104,7 +113,13 @@ let getWeiboData = function () {
 
             for (let i = 0; i < data.series_data.length; i++) {
                 weibo_senWave_legend_data.push(data.legend_data[i]);
-                weibo_senWave_series_data.push(data.series_data[i]);
+                if (data.series_data[i] >= 0) {
+                    weibo_senWave_series_positive_data.push(data.series_data[i]);
+                    weibo_senWave_series_negative_data.push(0);
+                } else {
+                    weibo_senWave_series_positive_data.push(0);
+                    weibo_senWave_series_negative_data.push(data.series_data[i]);
+                }
             }
 
             weibo_senWave.setOption(option_weibo_senWave);
@@ -218,7 +233,7 @@ let option_weibo_rank = {
 
 let option_official_senIndex = {
     title: {
-        text: '疫情防控平台情感指数分布',
+        text: '疫情防控平台关键词情感指数分布',
         subtext: 'January 26 - February 20'
     },
     tooltip: {
@@ -232,7 +247,7 @@ let option_official_senIndex = {
         },
     },
     yAxis: {
-        name: '消息个数',
+        name: '关键词个数',
         nameLocation: 'middle',
         nameGap: 40
     },
@@ -245,7 +260,7 @@ let option_official_senIndex = {
 
 let option_weibo_senIndex = {
     title: {
-        text: '微博情感指数分布',
+        text: '微博关键词情感指数分布',
         subtext: 'January 1 - February 20',
         left: 'right'
     },
@@ -261,7 +276,7 @@ let option_weibo_senIndex = {
         inverse: true,
     },
     yAxis: {
-        name: '消息个数',
+        name: '关键词个数',
         nameLocation: 'middle',
         nameGap: 40,
         position: 'right'
@@ -304,17 +319,29 @@ let option_official_senWave = {
     ],
     series: [
         {
-            name: '情感数值',
+            name: '积极情感',
             type: 'bar',
             label: {
                 show: false,
                 formatter: '{b}'
             },
-            data: official_senWave_series_data,
+            data: official_senWave_series_positive_data,
+            stack: '情感数值',
+            large: true,
+        },
+        {
+            name: '消极情感',
+            type: 'bar',
+            label: {
+                show: false,
+                formatter: '{b}'
+            },
+            data: official_senWave_series_negative_data,
+            stack: '情感数值',
             large: true,
         }
     ],
-    color: '#48D1CC'
+    color: ['#48D1CC', '#A52A2A']
 };
 
 let option_weibo_senWave = {
@@ -350,17 +377,29 @@ let option_weibo_senWave = {
     ],
     series: [
         {
-            name: '情感数值',
+            name: '积极情感',
             type: 'bar',
             label: {
                 show: false,
                 formatter: '{b}'
             },
-            data: weibo_senWave_series_data,
+            data: weibo_senWave_series_positive_data,
+            stack: '情感数值',
             large: true,
-        }
+        },
+        {
+            name: '消极情感',
+            type: 'bar',
+            label: {
+                show: false,
+                formatter: '{b}'
+            },
+            data: weibo_senWave_series_negative_data,
+            stack: '情感数值',
+            large: true,
+        },
     ],
-    color: '#F4A460'
+    color: ['#F4A460', '#A52A2A']
 };
 
 
@@ -389,7 +428,7 @@ weibo_rank.on('dataZoom', function (params) {
     }
 });
 
-official_senWave.on('dataZoom',function(params){
+official_senWave.on('dataZoom', function (params) {
     let weibo_start = option_official_senWave.dataZoom[0].start;
     let weibo_end = option_official_senWave.dataZoom[0].end;
 
@@ -414,20 +453,21 @@ weibo_senWave.on('dataZoom', function (params) {
 });
 
 
-
 function poa_init() {
     official_rank_legend_data.splice(0, official_rank_legend_data.length);
     official_rank_series_data.splice(0, official_rank_series_data.length);
     official_senIndex_series_data.splice(0, official_senIndex_series_data.length);
     official_senIndex_legend_data.splice(0, official_senIndex_legend_data.length);
     official_senWave_legend_data.splice(0, official_senWave_legend_data.length);
-    official_senWave_series_data.splice(0, official_senWave_series_data.length);
+    official_senWave_series_positive_data.splice(0, official_senWave_series_positive_data.length);
+    official_senWave_series_negative_data.splice(0, official_senWave_series_negative_data.length);
     weibo_rank_legend_data.splice(0, weibo_rank_legend_data.length);
     weibo_rank_series_data.splice(0, weibo_rank_series_data.length);
     weibo_senIndex_legend_data.splice(0, weibo_senIndex_legend_data.length);
     weibo_senIndex_series_data.splice(0, weibo_senIndex_series_data.length);
     weibo_senWave_legend_data.splice(0, weibo_senWave_legend_data.length);
-    weibo_senWave_series_data.splice(0, weibo_senWave_series_data.length);
+    weibo_senWave_series_positive_data.splice(0, weibo_senWave_series_positive_data.length);
+    weibo_senWave_series_negative_data.splice(0, weibo_senWave_series_negative_data.length);
 
     getOfficialData();
     getWeiboData();
