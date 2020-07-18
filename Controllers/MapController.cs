@@ -319,7 +319,7 @@ namespace WebApi.Controllers
                 var query = mapDb.Rumors.FirstOrDefault(s => s.Title == rumor.Title || s.RumorId == rumor.RumorId);
                 if (query != null)
                 {
-                    return BadRequest();
+                    return BadRequest("ID已存在！");
                 }
 
                 var date = DateCalculator.StringToDate(rumor.Date);
@@ -381,7 +381,7 @@ namespace WebApi.Controllers
                     mapDb.Remove(query);
                     mapDb.SaveChanges();
 
-                    return Ok();
+                    return Ok("删除成功!");
                 }
 
                 return BadRequest();
