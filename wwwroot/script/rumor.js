@@ -8,6 +8,8 @@ let vue = new Vue({
             basicPath: '/api/map/rumor',
             current: {},
             addVisible: false,
+            editVisible: false,
+            mode: '',
             rules: {
                 title: [
                     {required: true, message: '请输入标题', trigger: 'blur'},
@@ -66,22 +68,66 @@ let vue = new Vue({
                 this.keyword = "";
             },
             showAddRumor: function () {
+                this.mode = 'add';
                 this.current = {};
                 this.addVisible = true;
+
+                let newRumors = Object.assign([], this.rumors);
+                let sort = newRumors.sort((a, b) => a.rumorId - b.rumorId);
+
+                let i = 0;
+                try {
+                    sort.forEach(rumor => {
+                        i++;
+                        if (rumor.rumorId !== i) {
+                            this.current.rumorId = i;
+                            throw new Error("ending");  // 退出循环
+                        }
+                    });
+
+                    this.current.rumorId = i + 1;
+                } catch (e) {
+                    return 0;
+                }
+
+            },
+            showEditRumor: function (rumor) {
+                this.mode = 'edit';
+                this.current = Object.assign({}, rumor);
+                this.editVisible = true;
             },
             submitRumor: function (current) {
                 this.$refs[current].validate((valid) => {
                     if (valid) {
-                        let date = new Date(this.current.date);
-                        this.current.date = dateToString(date);
 
                         let url = this.basicPath;
-                        axios.post(url, this.current)
-                            .then(response => {
-                                this.queryAllRumor();
-                                this.addVisible = false;
-                            })
-                            .catch(e => this.$message.error(e.response.data))
+
+                        if (this.mode === 'add') {
+                            let date = new Date(this.current.date);
+                            this.current.date = dateToString(date);
+
+                            axios.post(url, this.current)
+                                .then(response => {
+                                    this.queryAllRumor();
+                                    this.addVisible = false;
+                                })
+                                .catch(e => this.$message.error(e.response.data))
+                        } else if (this.mode === 'edit') {
+                            let pattern = new RegExp('[0-9]+/[0-9]+/[0-9]');
+                            let dateStr = this.current.date;
+
+                            url += '/' + this.current.rumorId;
+                            if (!pattern.test(dateStr)) {
+                                let date = new Date(this.current.date);
+                                this.current.date = dateToString(date);
+                            }
+                            axios.put(url, this.current)
+                                .then(response => {
+                                    this.queryAllRumor();
+                                    this.editVisible = false;
+                                })
+                                .catch(e => this.$message.error(e.response.data))
+                        }
                     } else {
                         return false;
                     }

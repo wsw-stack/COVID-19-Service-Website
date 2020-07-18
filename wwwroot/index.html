@@ -157,7 +157,7 @@
         <el-dialog title="添加谣言" :visible.async="addVisible" width="60%" @close="addVisible=false">
             <el-form label-width="10%" :model="current" ref="current" class="demo-ruleForm" :rules="rules">
                 <el-form-item label="谣言 ID" prop="rumorId">
-                    <el-input v-model.number="current.rumorId" placeholder="请输入内容"></el-input>
+                    <el-input v-model.number="current.rumorId" placeholder="请输入内容" disabled></el-input>
                 </el-form-item>
                 <el-form-item prop="title" label="谣言标题">
                     <el-input v-model="current.title" placeholder="请输入内容"></el-input>
@@ -180,6 +180,38 @@
                 </el-form-item>
                 <el-form-item style="text-align: right;">
                     <el-button @click="addVisible=false" type="danger" icon="el-icon-close" circle></el-button>
+                    <el-button @click="submitRumor('current')" type="success" icon="el-icon-check" circle></el-button>
+                </el-form-item>
+            </el-form>
+        </el-dialog>
+
+        <!--修改事项对话框-->
+        <el-dialog title="修改谣言" :visible.async="editVisible" width="60%" @close="editVisible=false">
+            <el-form label-width="10%" :model="current" ref="current" class="demo-ruleForm" :rules="rules">
+                <el-form-item label="谣言 ID" prop="rumorId">
+                    <el-input v-model.number="current.rumorId" placeholder="请输入内容" disabled></el-input>
+                </el-form-item>
+                <el-form-item prop="title" label="谣言标题">
+                    <el-input v-model="current.title" placeholder="请输入内容"></el-input>
+                </el-form-item>
+                <el-form-item label="摘要" prop="mainSummary">
+                    <el-input v-model="current.mainSummary" placeholder="请输入内容"></el-input>
+                </el-form-item>
+                <el-form-item label="内容" prop="body">
+                    <el-input type="textarea" v-model="current.body" placeholder="请输入内容"></el-input>
+                </el-form-item>
+                <el-form-item label="日期" prop="date">
+                    <el-date-picker type="date" v-model="current.date" placeholder="请选择日期"></el-date-picker>
+                </el-form-item>
+                <el-form-item label="类型" prop="type">
+                    <el-radio-group v-model="current.rumorType">
+                    <el-radio :label=0 border>谣言</el-radio>
+                    <el-radio :label=1 border>可信</el-radio>
+                    <el-radio :label=2 border>未证实</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item style="text-align: right;">
+                    <el-button @click="editVisible=false" type="danger" icon="el-icon-close" circle></el-button>
                     <el-button @click="submitRumor('current')" type="success" icon="el-icon-check" circle></el-button>
                 </el-form-item>
             </el-form>

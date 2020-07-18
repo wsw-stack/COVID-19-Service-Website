@@ -22,7 +22,7 @@
     <list default="true" id="3b87a692-7546-4e6f-b66c-87fab43e1d21" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/rumor.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/rumor.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,10 +151,10 @@
       <screen x="0" y="23" width="1440" height="812" />
     </state>
     <state x="21" y="23" width="1419" height="793" key="dock-window-1/0.23.1440.812@0.23.1440.812" timestamp="1594301614315" />
-    <state x="936" y="330" key="run.anything.popup" timestamp="1594993473824">
+    <state x="936" y="330" key="run.anything.popup" timestamp="1595041429208">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="936" y="330" key="run.anything.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1594993473824" />
+    <state x="936" y="330" key="run.anything.popup/2560.348.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1595041429208" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1594913471191">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
