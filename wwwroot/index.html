@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/covid_visualization.css">
     <link rel="stylesheet" href="css/poa.css">
+    <link rel="stylesheet" href="css/rumor.css">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 
     <!-- 引入Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <!-- 引入axios.js -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- 引入Echarts-->
@@ -28,7 +29,7 @@
     <script src="resources/static/js/echarts-liquidfill.min.js"></script>
 </head>
 <body>
-<div class="container">
+<div id="system" class="container">
     <!--    头部-->
     <div class="header">
         <div id="app">
@@ -41,9 +42,10 @@
                      active-text-color="#ffd04b">
                 <el-image :src="virus_image_src" class="imgs"></el-image>
                 <span id="title" class="title">COVIDView: A Pandemic Review</span>
-                <el-menu-item index="1" style="margin-left: 16% ; font-size: 15px">疫情可视化</el-menu-item>
-                <el-menu-item index="2" style="margin-left: 10% ; font-size: 15px ">扩散模拟</el-menu-item>
-                <el-menu-item index="3" style="margin-left: 10% ; font-size: 15px ">舆情分析</el-menu-item>
+                <el-menu-item index="1" style="margin-left: 14% ; font-size: 15px">疫情可视化</el-menu-item>
+                <el-menu-item index="2" style="margin-left: 8% ; font-size: 15px ">扩散模拟</el-menu-item>
+                <el-menu-item index="3" style="margin-left: 8% ; font-size: 15px ">舆情分析</el-menu-item>
+                <el-menu-item index="4" style="margin-left: 8% ; font-size: 15px ">谣言公布</el-menu-item>
             </el-menu>
         </div>
     </div>
@@ -93,16 +95,107 @@
         </div>
     </div>
 
+    <!--第四部分-->
+    <span id="task4" class="mains">
+        <!--表格-->
+        <el-card shadow="hover" class="rumor_card">
+            <el-header class="rumor_header">
+                <span>新冠疫情谣言公布</span>
+            </el-header>
+            <el-main>
+                <el-row>
+                    <el-col :xs="24" :md="12">
+                        <el-input placeholder="请输入需要查找的谣言关键词" v-model="keyword" class="input-with-select">
+                            <el-button slot="append" icon="el-icon-search" @click="queryByTitle()"></el-button>
+                        </el-input>
+                    </el-col>
+                    <el-button-group style="margin-left: 40px">
+                        <el-button @click="showAddRumor()" icon="el-icon-circle-plus-outline"></el-button>
+                        <el-button @click="refresh()" icon="el-icon-refresh-left"></el-button>
+                    </el-button-group>
+                </el-row>
+                <el-table class="rumor_table" :data="rumors" :fit="true" :show-header="true"
+                          :row-class-name="rumorClass">
+                    <el-table-column type="expand">
+                        <template slot-scope="props">
+                            <el-form label-position="left" inline class="demo-table-expand">
+                                <el-form-item label="谣言 ID">
+                                    <span>{{ props.row.rumorId }}</span>
+                                </el-form-item>
+                                <el-form-item label="标题">
+                                    <span>{{ props.row.title }}</span>
+                                </el-form-item>
+                                <el-form-item label="摘要">
+                                    <span>{{ props.row.mainSummary }}</span>
+                                </el-form-item>
+                                <el-form-item label="内容">
+                                    <span>{{ props.row.body }}</span>
+                                </el-form-item>
+                                <el-form-item label="日期">
+                                    <span>{{ props.row.date }}</span>
+                                </el-form-item>
+                            </el-form>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="谣言 ID" prop="rumorId" align="center" sortable></el-table-column>
+                    <el-table-column label="标题" prop="title" align="center" sortable></el-table-column>
+                    <el-table-column label="日期" prop="date" align="center" sortable></el-table-column>
+                    <el-table-column label="操作" fixed="right" align="center" width="200px">
+                        <template slot-scope="props">
+                            <el-button mc-type="column-el-button" type="primary" icon="el-icon-edit" circle
+                                       @click="showEditRumor(props.row)">
+                            </el-button>
+                            <el-button mc-type="column-el-button" type="danger" icon="el-icon-delete" circle
+                                       @click="deleteRumor(props.row)"></el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-main>
+        </el-card>
 
-    <footer class="foot">
-        <div class="notes">
-            <p class="ending_ps">© 2020 GSS37 Group. Developed by Zhong Y., Guo H.P., Yan H.T., He R.D. and Sheng G.M.
-                (Outside help)</p>
-            <p class="ending_ps">Project repository:
-                <a href="https://github.com/ashyseer/COVID-19-Service-Website">https://github.com/ashyseer/COVID-19-Service-Website</a>
-            </p>
-        </div>
-    </footer>
+        <!--添加事项对话框-->
+        <el-dialog title="添加谣言" :visible.async="addVisible" width="60%" @close="addVisible=false">
+            <el-form label-width="10%" :model="current" ref="current" class="demo-ruleForm" :rules="rules">
+                <el-form-item label="谣言 ID" prop="rumorId">
+                    <el-input v-model.number="current.rumorId" placeholder="请输入内容"></el-input>
+                </el-form-item>
+                <el-form-item prop="title" label="谣言标题">
+                    <el-input v-model="current.title" placeholder="请输入内容"></el-input>
+                </el-form-item>
+                <el-form-item label="摘要" prop="mainSummary">
+                    <el-input v-model="current.mainSummary" placeholder="请输入内容"></el-input>
+                </el-form-item>
+                <el-form-item label="内容" prop="body">
+                    <el-input type="textarea" v-model="current.body" placeholder="请输入内容"></el-input>
+                </el-form-item>
+                <el-form-item label="日期" prop="date">
+                    <el-date-picker type="date" v-model="current.date" placeholder="请选择日期"></el-date-picker>
+                </el-form-item>
+                <el-form-item label="类型" prop="type">
+                    <el-radio-group v-model="current.rumorType">
+                    <el-radio :label=0 border>谣言</el-radio>
+                    <el-radio :label=1 border>可信</el-radio>
+                    <el-radio :label=2 border>未证实</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item style="text-align: right;">
+                    <el-button @click="addVisible=false" type="danger" icon="el-icon-close" circle></el-button>
+                    <el-button @click="submitRumor('current')" type="success" icon="el-icon-check" circle></el-button>
+                </el-form-item>
+            </el-form>
+        </el-dialog>
+</div>
+
+
+<footer class="foot">
+    <div class="notes">
+        <p class="ending_ps">© 2020 GSS37 Group. Developed by Zhong Y., Guo H.P., Yan H.T., He R.D. and Sheng G.M.
+            (Outside help)</p>
+        <p class="ending_ps">Project repository:
+            <a href="https://github.com/ashyseer/COVID-19-Service-Website">https://github.com/ashyseer/COVID-19-Service-Website</a>
+        </p>
+    </div>
+</footer>
 </div>
 
 <script src="script/tools/date.js"></script>
@@ -110,5 +203,6 @@
 <script src="script/covid_visualization.js"></script>
 <script src="script/poa.js"></script>
 <script src="script/main.js"></script>
+<script src="script/rumor.js"></script>
 </body>
 </html>

@@ -21,6 +21,9 @@ let Main = {
                     document.getElementById('task3').style.display = 'block';
                     poa_init();
                     break;
+                case("4"):
+                    document.getElementById('task4').style.display = 'block';
+                    break;
                 default:
                     document.getElementById('task1').style.display = 'block';
                     covid_visualization_init();
@@ -33,7 +36,7 @@ var Ctor = Vue.extend(Main);
 new Ctor().$mount('#app');
 
 function hideAll() {
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 4; i++) {
         let task = document.getElementById('task' + i);
         task.style.display = 'none';
     }

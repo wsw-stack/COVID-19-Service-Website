@@ -1,0 +1,42 @@
+.rumor_card {
+    padding: 10px 0 20px 0;
+}
+
+.rumor_header {
+    text-align: left;
+    font-size: 20px;
+    height: 50px;
+}
+
+.rumor_table {
+    top: 20px;
+    width: 100%;
+}
+
+.demo-table-expand {
+    font-size: 0;
+}
+
+.demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+    float: left;
+}
+
+.demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.el-form-item__content{
+    width:90%;
+}
+
+.el-table .warning-row {
+    background: oldlace;
+}
+
+.el-table .success-row {
+    background: #f0f9eb;
+}
